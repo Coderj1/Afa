@@ -34,9 +34,11 @@ export default function Home() {
             ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
             .
             </p>
-            <div className='flex gap-3 justify-center p-3'>
-              <Button color='blue' className='rounded-full sm:w-32'>Gallery</Button>
-              <Button color='blue' className='rounded-full sm:w-32'>Contact</Button>
+            <div className='flex gap-3 justify-center sm:p-3 p-1'>
+              <Button color='blue' className='rounded-full sm:w-32 w-52'>Gallery</Button>
+              <span className='sm:inline hidden'>
+               <Button color='blue' className='rounded-full sm:w-32'>Contact</Button>
+              </span>
             </div>
           </motion.div>
           <motion.div
@@ -52,7 +54,7 @@ export default function Home() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-3xl font-bold text-gray-500 text-center mt-2'>
+        className='text-3xl font-bold text-gray-500 text-center mt-5'>
         PROFILE</motion.h1>
         <div className='flex md:flex-row flex-col  items-center justify-center p-2'>
         <motion.div
@@ -67,7 +69,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className='flex-1'>
-                <div className='flex flex-col text-center'>
+                <div className='flex flex-col text-center pt-3'>
                     <h1 className='text-3xl font-bold text-blue-500'>BIOGRAPHY</h1>
                     <p className='text-lg text-justify mx-auto max-w-xl'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
