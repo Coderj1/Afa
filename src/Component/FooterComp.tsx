@@ -8,7 +8,7 @@ export default function FooterComp() {
   return (
     <div>
       <Footer container className='border border-t-8 border-teal-500'>
-    <div className='w-full max-w-7xl mx-auto'>
+    <div className='w-full mx-auto'>
       <div className='grid w-full justify-between sm:flex md:grid-cols-1'>
         <div className='mt-5'>
            <Link to='/' className='self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white'>
