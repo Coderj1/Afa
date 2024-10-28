@@ -10,7 +10,7 @@ export default function Header() {
        animate={{ y: 0 }}
        transition={{ type: 'spring', stiffness: 120 }}
        >
-         <Navbar className='border-b-2 border-blue-300 '>
+         <Navbar className='border-b-2 font-bold border-blue-300 '>
             <Navbar.Brand>
                 <img src={logo} alt="logo" width={40} className='rounded-full' />
             </Navbar.Brand>
@@ -19,8 +19,8 @@ export default function Header() {
             </div>
                 <Navbar.Collapse>
                  <Navbar.Link href="/">Home</Navbar.Link>
-                 <Navbar.Link href="/">Gallery</Navbar.Link>
-                 <Navbar.Link href="/">Blog</Navbar.Link>
+                 <Navbar.Link href="/gallery">Gallery</Navbar.Link>
+                 <Navbar.Link href="/blog">Blog</Navbar.Link>
                  <Navbar.Link href="/about">About</Navbar.Link>
                  <Navbar.Link href="/contact">Contact</Navbar.Link>
                 </Navbar.Collapse>

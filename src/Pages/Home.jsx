@@ -1,15 +1,21 @@
 import React from 'react'
 import img1 from '../img/afabg.png'
-import img2 from '../img/afab.jpg'
+import img2 from '../img/icon1.png'
 import img3 from '../img/afa champion.jpg'
-import img4 from '../img/afa champion.jpg'
 import img5 from '../img/afa u12.jpg'
 import img6 from '../img/afa3.jpg'
 import img7 from '../img/afa2.jpg'
-import { FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa6'
-import { MdEmail, MdFacebook } from 'react-icons/md'
+import imgj from '../img/jessey.png'
+import imgl from '../img/lineup.png'
+import vid1 from '../img/afa trophy.mp4'
+import { HiEllipsisHorizontalCircle, HiTrophy } from "react-icons/hi2"
+import { GiWhirlpoolShuriken } from "react-icons/gi"
 import { Button } from 'flowbite-react'
 import { motion } from 'framer-motion';
+import { FaPlaystation } from "react-icons/fa6";
+import { HiAdjustments } from 'react-icons/hi'
+import SimpleSlider from '../Component/Slider'
+import Banner from '../Component/Banner'
 
 export default function Home() {
   return (
@@ -50,77 +56,80 @@ export default function Home() {
             <img src={img1} alt="hero" width={550} className='' />
         </motion.div>
         </div>
-        <motion.h1
+        <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-3xl font-bold text-gray-500 text-center mt-5'>
-        PROFILE</motion.h1>
-        <div className='flex md:flex-row flex-col  items-center justify-center p-2'>
+        className='flex flex-wrap gap-2 max-w-7xl w-full relative mx-auto'
+        >
+           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto  p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+           <img src={imgj} width={90} className='rounded-full'/>
+             <h1 className='text-sm font-bold text-white uppercase'>
+             Equipe de joueurs
+             </h1>
+           </div>
+           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto  p-3 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+             <img src={img2} width={90} className='rounded-full'/>
+             <h1 className='text-md font-bold text-white uppercase'>
+             meilleur joueur
+             </h1>
+           </div>
+           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+             <HiTrophy color='white' size={50} />
+             <h1 className='text-md font-bold text-white uppercase'>
+             Salle des trophées
+             </h1>
+           </div>
+           <div className="flex justify-between gap-3 items-center sm:w-72 mx-auto  p-5 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+           <img src={imgl} width={70} className='rounded-full'/>
+             <h1 className='text-xs font-bold text-white uppercase'>
+             Statistiques de l'équipe
+             </h1>
+           </div>
+        </motion.div>
+        <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+         className='uppercase sm:text-3xl text-xl max-w-5xl mx-auto p-3 text-white font-bold '>
+           Actualite en bref
+        </motion.h1>
         <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className='flex-1'>
-               <img src={img2} alt="hero" width={550} className='w-full sm:p-5' />
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}>
+          <Banner />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className='flex-1'>
-                <div className='flex flex-col text-center pt-3'>
-                    <h1 className='text-3xl font-bold text-blue-500'>BIOGRAPHY</h1>
-                    <p className='text-lg text-justify mx-auto max-w-xl'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                    ipsum dolor sit amet consectetur adipisicing elit. Quisquam, rem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                    ipsum dolor sit amet consectetur adipisicing elit. Quisquam, rem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                    ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos rem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                    ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
-                    .
-                    </p>
-                </div>
-                <div className='flex flex-wrap max-w-xl mx-auto gap-3 justify-between m-3'>
-                    <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 5 }}
-                    >
-                    <FaFacebook color='blue' size={30} />
-                    </motion.div>
-                    <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 5 }}
-                    >
-                    <MdEmail color='red' size={34} />
-                    </motion.div>
-                    <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 5 }}
-                    >
-                    <FaTwitter color='skyblue' size={30} />
-                    </motion.div>
-                    <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 5 }}
-                    >
-                    <FaLinkedin color='blue' size={30} />
-                    </motion.div>
-                    <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 5 }}
-                    >
-                    <FaYoutube color='red' size={35} />
-                  </motion.div>
-                </div>
-              </motion.div>
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+         className='sm:text-3xl text-xl max-w-5xl mx-auto uppercase font-bold text-white m-2 p-2'>
+           Evenement de la Semaine
+        </motion.div>
+        <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className='flex overflow-x-scroll scrollbar'>
+         <SimpleSlider />
+        </motion.div>
+        <div className='p-3 mx-auto max-w-7xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
+           <video
+            autoPlay
+            loop
+            muted 
+            width={600} 
+            className='mx-auto'>
+              <source src={vid1} />
+           </video>
+           <div className='mx-auto'>
+            <p className='uppercase font-bold text-xl text-white text-center'>Champion Regional du littoral</p>
+            <p className='uppercase font-bold text-sm text-yellow-200 text-center'>African Football Academy</p>
+           </div>
         </div>
         <div>
-          <h1 className='uppercase text-3xl font-bold text-gray-500 text-center mt-2 mb-4'>Achievement</h1>
+          <h1 className='uppercase text-3xl font-bold text-white text-center mt-2 mb-4'>Réalisation</h1>
           <div className="relative">
             <motion.div
               initial={{ opacity: 0 }}
@@ -142,13 +151,13 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 3 }}
                 className="sm:text-3xl font-bold text-cyan-400">
-                 Our Achievements
+                Nos réalisations
                 </motion.h1>
                 <motion.h1
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 3 }}
-                 className='sm:text-4xl font-bold mb-4'>Trophy Room Gallery</motion.h1>
+                 className='sm:text-4xl font-bold mb-4'>Galerie de la salle des trophées</motion.h1>
                 <Button className='mx-auto sm:w-52 w-32 rounded-full' color='blue'>Gallery</Button>
               </div>
             </motion.div>
@@ -159,9 +168,9 @@ export default function Home() {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 3 }}
-          className='text-3xl font-bold text-gray-500 text-center mt-2 mb-4'
+          className='text-3xl font-bold text-white text-center mt-2 mb-4 uppercase'
           >
-           Category & Equipe
+           Catégorie et équipe
           </motion.h1>
           <motion.div
           className='flex sm:flex-row flex-col justify-between gap-2 p-4'
