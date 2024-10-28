@@ -16,6 +16,7 @@ import { FaPlaystation } from "react-icons/fa6";
 import { HiAdjustments } from 'react-icons/hi'
 import SimpleSlider from '../Component/Slider'
 import Banner from '../Component/Banner'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   return (
@@ -41,7 +42,9 @@ export default function Home() {
             .
             </p>
             <div className='flex gap-3 justify-center sm:p-3 p-1'>
+            <Link to='/gallery'>
               <Button color='blue' className='rounded-full sm:w-32 w-52'>Gallery</Button>
+            </Link>
               <span className='sm:inline hidden'>
                <Button color='blue' className='rounded-full sm:w-32'>Contact</Button>
               </span>
