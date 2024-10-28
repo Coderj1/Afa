@@ -2,6 +2,7 @@ import { Navbar } from 'flowbite-react'
 import React from 'react'
 import logo from '../img/afa.png'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <>
@@ -19,7 +20,11 @@ export default function Header() {
             </div>
                 <Navbar.Collapse>
                  <Navbar.Link href="/">Home</Navbar.Link>
-                 <Navbar.Link href="/gallery">Gallery</Navbar.Link>
+                 <Navbar.Link>
+                 <Link to='/gallery'>
+                    Gallery
+                 </Link>
+                 </Navbar.Link>
                  <Navbar.Link href="/blog">Blog</Navbar.Link>
                  <Navbar.Link href="/about">About</Navbar.Link>
                  <Navbar.Link href="/contact">Contact</Navbar.Link>
