@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import img1 from '../img/afabg.png'
 import img2 from '../img/icon1.png'
 import img3 from '../img/afa champion.jpg'
@@ -8,6 +8,10 @@ import img7 from '../img/afa2.jpg'
 import imgj from '../img/jessey.png'
 import imgl from '../img/lineup.png'
 import vid1 from '../img/afa trophy.mp4'
+import imgo from '../img/trophy/ola2.png'
+import imgm from '../img/trophy/msi.png'
+import imgn from '../img/trophy/nike.png'
+import imgf from '../img/trophy/feca.png'
 import { HiEllipsisHorizontalCircle, HiTrophy } from "react-icons/hi2"
 import { GiWhirlpoolShuriken } from "react-icons/gi"
 import { Button } from 'flowbite-react'
@@ -17,11 +21,30 @@ import { HiAdjustments } from 'react-icons/hi'
 import SimpleSlider from '../Component/Slider'
 import Banner from '../Component/Banner'
 import { Link } from 'react-router-dom'
+import Media from './Media'
 
 export default function Home() {
+
+  const images = [imgj, img2, img3, img5, img6, img7]; // Array of background images
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change image every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [images.length]);
+
   return (
     <div>
-        <div className='flex md:flex-row flex-col items-center bg-img1 bg-cover justify-center p-2'>
+        <div 
+         style={{
+          backgroundImage: `url(${images[currentImageIndex]})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+       className='flex md:flex-row flex-col items-center justify-center p-2'>
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,7 +59,7 @@ export default function Home() {
           className='flex-1'
           >
             <h1 className='text-3xl font-bold text-center text-blue-500 uppercase'>AFRICAN FOOTBALL ACADEMY</h1>
-            <p className='text-justify mx-auto md:w-[490px] mb-2'>
+            <p className='text-justify text-white mx-auto md:w-[490px] mb-2'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
             .
@@ -117,20 +140,33 @@ export default function Home() {
         className='flex overflow-x-scroll scrollbar'>
          <SimpleSlider />
         </motion.div>
-        <div className='p-3 mx-auto max-w-7xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
+        <div className='p-3 mx-auto max-w-6xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
            <video
             autoPlay
             loop
             muted 
             width={600} 
-            className='mx-auto'>
+            className='mx-auto flex-1'>
               <source src={vid1} />
            </video>
-           <div className='mx-auto'>
-            <p className='uppercase font-bold text-xl text-white text-center'>Champion Regional du littoral</p>
-            <p className='uppercase font-bold text-sm text-yellow-200 text-center'>African Football Academy</p>
+           <div className='mx-auto flex-1'>
+            <div className='mx-auto'>
+              <p className='uppercase font-bold text-xl text-white text-center'>Champion Regional du littoral</p>
+              <p className='uppercase font-bold text-sm text-yellow-200 text-center'>African Football Academy</p>
+            </div>
            </div>
         </div>
+          <motion.h1 className='uppercase p-2 text-xl text-white font-bold max-w-2xl mx-auto'>
+             Programme partenaire
+          </motion.h1>
+          <div className='bg-white'>
+              <div className='flex max-w-2xl mx-auto gap-6 justify-between overflow-x-scroll scrollbar p-3'>
+                <img src={imgo} width={120} />
+                <img src={imgm} width={100} />
+                <img src={imgn} width={100} />
+                <img src={imgf} width={100} />
+              </div>
+          </div>
         <div>
           <h1 className='uppercase text-3xl font-bold text-white text-center mt-2 mb-4'>Réalisation</h1>
           <div className="relative">
@@ -170,6 +206,10 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+        <div className='uppercase font-bold mx-auto text-2xl max-w-4xl text-white p-2'>
+           MultiMedia
+        </div>
+          <Media />
         <div>
           <motion.h1
           initial={{ opacity: 0, x: -100 }}

@@ -13,7 +13,7 @@ const SimpleSlider = () => {
 
 
   return (
-    <div className='flex flex-col md:flex-row gap-5 max-w-5xl mx-auto m-5'>
+    <div className='flex flex-col md:flex-row gap-5 max-w-5xl mx-auto p-5'>
         <div className='group relative w-full h-[330px] hover:border-2
         border-teal-400 overflow-hidden sm:w-[340px] bg-white rounded-md'>
         <Link to='/blog'>
