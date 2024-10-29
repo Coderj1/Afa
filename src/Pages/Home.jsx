@@ -161,7 +161,11 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 3 }}
                  className='sm:text-4xl font-bold mb-4'>Galerie de la salle des trophées</motion.h1>
-                <Button className='mx-auto sm:w-52 w-32 rounded-full' color='blue'>Gallery</Button>
+                <Button className='mx-auto sm:w-52 w-32 rounded-full' color='blue'>
+                  <Link to='/trophy'>
+                     Gallery
+                  </Link>
+                </Button>
               </div>
             </motion.div>
           </div>

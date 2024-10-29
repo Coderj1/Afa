@@ -4,6 +4,8 @@ import Home from './Pages/Home'
 import './App.css'
 import FooterComp from './Component/FooterComp'
 import Gallery from './Pages/Gallery'
+import Trophy from './Pages/Trophy'
+import Blog from './Pages/Blog'
 
 function App() {
 
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/trophy" element={<Trophy />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>
