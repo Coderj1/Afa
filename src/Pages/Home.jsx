@@ -14,14 +14,15 @@ import imgn from '../img/trophy/nike.png'
 import imgf from '../img/trophy/feca.png'
 import { HiEllipsisHorizontalCircle, HiTrophy } from "react-icons/hi2"
 import { GiWhirlpoolShuriken } from "react-icons/gi"
-import { Button } from 'flowbite-react'
+import { Button} from 'flowbite-react'
 import { motion } from 'framer-motion';
 import { FaPlaystation } from "react-icons/fa6";
 import { HiAdjustments } from 'react-icons/hi'
 import SimpleSlider from '../Component/Slider'
 import Banner from '../Component/Banner'
 import { Link } from 'react-router-dom'
-import Media from './Media'
+import Media from '../Component/Media'
+import Carousel from '../Component/Carousel'
 
 export default function Home() {
 
@@ -140,6 +141,9 @@ export default function Home() {
         className='flex overflow-x-scroll scrollbar'>
          <SimpleSlider />
         </motion.div>
+        <div className="min-h-screen flex items-center justify-center">
+          <Carousel />
+        </div>
         <div className='p-3 mx-auto max-w-6xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
            <video
             autoPlay

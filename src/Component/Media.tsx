@@ -12,7 +12,7 @@ export default function Media() {
        <div className='flex flex-col md:flex-row gap-5 max-w-5xl mx-auto p-2'>
             <div className='group relative w-full h-[330px] hover:border-2
             border-teal-400 overflow-hidden sm:w-[600px] bg-white rounded-md'>
-                <Link to='/blog'>
+                <Link to='/play'>
                 <video className='h-[260px] w-full object-cover group-hover:h-[200px] transition-all duration-300 z-2'>
                     <source src={img1} />
                 </video>
@@ -31,7 +31,7 @@ export default function Media() {
             </div>
             <div className='group relative w-full h-[330px] hover:border-2
             border-teal-400 overflow-hidden sm:w-[600px] bg-white rounded-md'>
-                <Link to='/blog'>
+                <Link to='/play'>
                 <video className='h-[260px] w-full object-cover group-hover:h-[200px] transition-all duration-300 z-2'>
                     <source src={img1} />
                 </video>

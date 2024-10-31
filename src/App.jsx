@@ -6,6 +6,7 @@ import FooterComp from './Component/FooterComp'
 import Gallery from './Pages/Gallery'
 import Trophy from './Pages/Trophy'
 import Blog from './Pages/Blog'
+import Play from './Pages/Play'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/trophy" element={<Trophy />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/play" element={<Play />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>
