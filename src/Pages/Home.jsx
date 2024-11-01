@@ -23,6 +23,7 @@ import Banner from '../Component/Banner'
 import { Link } from 'react-router-dom'
 import Media from '../Component/Media'
 import Carousel from '../Component/Carousel'
+import Matches from '../Component/Matches'
 
 export default function Home() {
 
@@ -141,9 +142,6 @@ export default function Home() {
         className='flex overflow-x-scroll scrollbar'>
          <SimpleSlider />
         </motion.div>
-        <div className="min-h-screen flex items-center justify-center">
-          <Carousel />
-        </div>
         <div className='p-3 mx-auto max-w-6xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
            <video
             autoPlay
@@ -165,11 +163,22 @@ export default function Home() {
           </motion.h1>
           <div className='bg-white'>
               <div className='flex max-w-2xl mx-auto gap-6 justify-between overflow-x-scroll scrollbar p-3'>
-                <img src={imgo} width={120} />
-                <img src={imgm} width={100} />
-                <img src={imgn} width={100} />
-                <img src={imgf} width={100} />
+                <span className='w-20'>
+                   <img src={imgo} width={120} />
+                </span>
+                <span className='w-20'>
+                   <img src={imgm} width={100} />
+                </span>
+                <span className='w-28'>
+                   <img src={imgn} width={100} />
+                </span>
+                <span className='w-20'>
+                    <img src={imgf} width={70} />
+                </span>
               </div>
+          </div>
+          <div className='p-2'>
+             <Matches />
           </div>
         <div>
           <h1 className='uppercase text-3xl font-bold text-white text-center mt-2 mb-4'>Réalisation</h1>
