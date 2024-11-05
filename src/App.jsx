@@ -3,6 +3,7 @@ import Header from './Component/Header'
 import Home from './Pages/Home'
 import './App.css'
 import FooterComp from './Component/FooterComp'
+import Matchdetail from './Pages/Matchdetail'
 import Gallery from './Pages/Gallery'
 import Trophy from './Pages/Trophy'
 import Blog from './Pages/Blog'
@@ -20,6 +21,7 @@ function App() {
           <Route path="/trophy" element={<Trophy />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/play" element={<Play />} />
+          <Route path="/matchdet" element={<Matchdetail />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>
