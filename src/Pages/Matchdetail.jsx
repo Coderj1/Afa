@@ -9,7 +9,7 @@ export default function Matchdetail() {
     <div className='bg-img1 bg-cover min-h-screen'>
     <div className='mx-auto max-w-5xl bg-white p-2'>
         <h1 className='text-center text-2xl font-bold text-blue-400 p-4'>Upcoming Match</h1>
-        <div className='flex justify-between items-center p-3 mx-auto gap-4 max-w-3xl mx-auto'>
+        <div className='flex justify-between items-center p-3 gap-4 max-w-3xl mx-auto'>
                     <span className='w-40'>
                         <img src={img1} width={200} className='rounded-full mx-auto' />
                         <p className='text-center uppercase text-sm'>AFA</p>
