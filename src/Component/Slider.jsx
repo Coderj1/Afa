@@ -16,9 +16,9 @@ const SimpleSlider = () => {
     <div className='bg-white w-full'>
       <div className='flex flex-col md:flex-row gap-5 max-w-5xl mx-auto w-full p-1'>
           <div className='group relative w-full h-[330px] hover:border-2
-          border-teal-400 overflow-hidden sm:w-[340px] bg-gray-300 rounded-md'>
+          border-teal-400 overflow-hidden sm:w-[340px] bg-blue-700 rounded-md'>
           <Link to='/blog'>
-          <img src={img5} className='h-[260px] w-full object-cover group-hover:h-[200px]
+          <img src={img5} className='h-[260px] w-full object-cover group-hover:h-[230px]
             transition-all duration-300 z-2' />
           <h1 className='z-1 group-hover:h-[100px] absolute bottom-[0px] 
           left-0 right-0 border border-teal-500  hover:bg-blue-400
@@ -29,8 +29,8 @@ const SimpleSlider = () => {
           </Link>
           </div>
           <div className='group relative w-full h-[330px] hover:border-2
-          border-teal-400 overflow-hidden sm:w-[340px] bg-gray-300 rounded-md'>
-          <img src={img3} className='h-[260px] w-full object-cover group-hover:h-[200px]
+          border-teal-400 overflow-hidden sm:w-[340px] bg-blue-700 rounded-md'>
+          <img src={img3} className='h-[260px] w-full object-cover group-hover:h-[230px]
             transition-all duration-300 z-2' />
           <h1 className='z-1 group-hover:h-[100px] absolute bottom-[0px] 
           left-0 right-0 border border-teal-500  hover:bg-blue-400
@@ -40,8 +40,8 @@ const SimpleSlider = () => {
           </h1>
           </div>
           <div className='group relative w-full h-[330px] hover:border-2
-          border-teal-400 overflow-hidden sm:w-[340px] bg-gray-300 rounded-md'>
-          <img src={img4} className='h-[260px] w-full object-cover group-hover:h-[200px]
+          border-teal-400 overflow-hidden sm:w-[340px] bg-blue-700 rounded-md'>
+          <img src={img4} className='h-[260px] w-full object-cover group-hover:h-[230px]
             transition-all duration-300 z-2' />
           <h1 className='z-1 group-hover:h-[100px] absolute bottom-[0px] 
           left-0 right-0 border border-teal-500  hover:bg-blue-400

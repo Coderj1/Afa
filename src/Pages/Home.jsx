@@ -27,7 +27,7 @@ import Matches from '../Component/Matches'
 
 export default function Home() {
 
-  const images = [imgj, img2, img3, img5, img6, img7]; // Array of background images
+  const images = [img3, img5, img6, img7]; // Array of background images
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -148,7 +148,7 @@ export default function Home() {
         <div className='p-2'>
              <Matches />
         </div>
-        <div className='bg-blue-500 p-3 mx-auto max-w-6xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
+        <div className='bg-gray-200 p-3 mx-auto max-w-6xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
            <video
             autoPlay
             loop
@@ -159,8 +159,8 @@ export default function Home() {
            </video>
            <div className='mx-auto flex-1'>
             <div className='mx-auto'>
-              <p className='uppercase font-bold text-xl text-white text-center'>Champion Regional du littoral</p>
-              <p className='uppercase font-bold text-sm text-yellow-200 text-center'>African Football Academy</p>
+              <p className='uppercase font-bold text-xl text-black text-center'>Champion Regional du littoral</p>
+              <p className='uppercase font-bold text-sm text-blue-700 text-center'>African Football Academy</p>
             </div>
            </div>
         </div>

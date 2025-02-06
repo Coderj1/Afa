@@ -9,6 +9,7 @@ import Trophy from './Pages/Trophy'
 import Blog from './Pages/Blog'
 import Play from './Pages/Play'
 import Stat from './Pages/Stat'
+import About from './Pages/About'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/play" element={<Play />} />
           <Route path="/matchdet" element={<Matchdetail />} />
           <Route path="/stat" element={<Stat />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>
