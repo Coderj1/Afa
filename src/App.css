@@ -4,7 +4,7 @@
     font-style: italic;
 }
 body{
-    background: rgb(78, 78, 255); /* Gradient from blue to white */
+    /* Gradient from blue to white */
 }
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";

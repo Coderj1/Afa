@@ -25,6 +25,7 @@ export default function Header() {
                     Gallery
                  </Link>
                  </Navbar.Link>
+                 <Navbar.Link href="/stat">Stats</Navbar.Link>
                  <Navbar.Link href="/about">About</Navbar.Link>
                  <Navbar.Link href="/contact">Contact</Navbar.Link>
                 </Navbar.Collapse>

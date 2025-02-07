@@ -11,7 +11,7 @@ const Matches = () => {
 
   return (
     <div className='flex gap-5 max-w-7xl mx-auto p-5 overflow-x-scroll scrollbar'>
-            <div className='p-2 bg-white mx-auto'>
+            <div className='p-2 bg-gray-100 mx-auto shadow-xl'>
                 <Link to='/matchdet'>
                         <div className='flex justify-between items-center p-3 mx-auto gap-4'>
                             <span className='w-20'>
@@ -28,11 +28,11 @@ const Matches = () => {
                         </div>
                         <div className='mx-auto text-center'>
                             <p className='text-sm text-black'>Stade de Japoma</p>
-                            <p className='text-xs text-gray-400'>11/11/2024</p>
+                            <p className='text-xs text-gray-400'>12 Mars 2024</p>
                         </div>
                 </Link>
             </div>
-            <div className='p-2 bg-white mx-auto'>
+            <div className='p-2 bg-gray-100 mx-auto shadow-xl'>
              <Link to='/matchdet'>
                 <div className='flex justify-between items-center p-3 mx-auto gap-4'>
                     <span className='w-20'>
@@ -49,11 +49,11 @@ const Matches = () => {
                 </div>
                 <div className='mx-auto text-center'>
                     <p className='text-sm text-black'>Stade Omnisport Douala</p>
-                    <p className='text-xs text-gray-400'>19/11/2024</p>
+                    <p className='text-xs text-gray-400'>19 Mars 2024</p>
                 </div>
               </Link>
             </div>
-            <div className='p-2 bg-white mx-auto'>
+            <div className='p-2 bg-gray-100 mx-auto shadow-xl'>
               <Link to='/matchdet'>
                 <div className='flex justify-between items-center p-3 mx-auto gap-4'>
                     <span className='w-20'>
@@ -70,7 +70,7 @@ const Matches = () => {
                 </div>
                 <div className='mx-auto text-center'>
                     <p className='text-sm text-black'>Stade de Olembe</p>
-                    <p className='text-xs text-gray-400'>21/12/2024</p>
+                    <p className='text-xs text-gray-400'>30 Mars 2024</p>
                 </div>
                </Link>
             </div>

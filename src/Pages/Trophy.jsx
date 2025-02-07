@@ -12,54 +12,62 @@ export default function Trophy() {
      const [showModal, setshowModal] = useState(null)
 
   return (
-    <div className='min-h-screen flex flex-wrap justify-between gap-10 m-7 max-w-5xl mx-auto'>
-        <div onClick={() => {setshowModal(true)}} className='mx-auto hover:bg-blue-600 hover:border-2 hover:border-white rounded-2xl hover:p-5'>
-             <img src={img1} width={100} className='mx-auto' />
-             <p className='text-white text-center text-xl font-bold'>Champion Regional [<span className='text-sm text-yellow-400'>2</span>]</p>
-        </div>
-        <div className='mx-auto hover:bg-blue-600 hover:border-2 hover:border-white rounded-2xl hover:p-5'>
-             <img src={img2} width={180} className='mx-auto'  />
-             <p className='text-white text-center text-xl font-bold'>Champion Cameroon [<span className='text-sm text-yellow-400'>1</span>]</p>
-        </div>
-        <div className='mx-auto hover:bg-blue-600 hover:border-2 hover:border-white rounded-2xl hover:p-5'>
-             <img src={img3} width={130} className='mx-auto'  />
-             <p className='text-white text-center text-xl font-bold'>Easter Cup [<span className='text-sm text-yellow-400'>3</span>]</p>
-        </div>
-        <div className='mx-auto hover:bg-blue-600 hover:border-2 hover:border-white rounded-2xl hover:p-2'>
-             <img src={img5} width={100} className='mx-auto'  />
-             <p className='text-white text-center text-xl font-bold'>Caf Confederation [<span className='text-sm text-yellow-400'>1</span>]</p>
-        </div>
-        <div className='mx-auto hover:bg-blue-600 hover:border-2 hover:border-white rounded-2xl hover:p-2'>
-             <img src={img4} width={190} className='mx-auto'  />
-             <p className='text-white text-center text-xl font-bold'>Interpoule [<span className='text-sm text-yellow-400'>2</span>]</p>
-        </div>
-       
-        <Modal className='sm:justify-center'
-          show={showModal}
-          onClose={()=> setshowModal(false)}
-          popup size='sm'
-          >
-           <Modal.Header />
-           <Modal.Body>
-             <div className='text-center mx-auto'>
-               <HiTrophy color='blue' className='h-20 w-20 mx-auto p-2'/>
-               <div>
-                    <h1 className='text-lg'>
-                         * 2020/2021 - Winner
-                    </h1>
-                         <p>Player of the competition</p>
-                         <p className='sm text-red-500'>Abdu Talla</p>
+     <div>
+          <div className='p-32 bg-img1 bg-cover'>
+               <h1 className='flex text-3xl text-center justify-center text-2xl font-bold uppercase'>
+               Trophy Room
+               </h1>
+         </div>
+           <h1 className='text-3xl text-center p-4 font-semibold uppercase underline'></h1>
+           <div className='min-h-screen flex flex-wrap justify-between md:gap-6 gap-24 m-7 max-w-5xl mx-auto'>
+               <div onClick={() => {setshowModal(true)}} className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
+                    <img src={img1} width={100} className='mx-auto' />
+                    <p className='text-black text-center text-xl font-bold'>Champion Regional [<span className='text-sm text-yellow-700'>2</span>]</p>
                </div>
-               <div>
-                    <h1 className='text-lg'>
-                         * 2022/2023 - Winner
-                    </h1>
-                         <p>Player of the competition</p>
-                         <p className='sm text-red-500'>Abdu Talla</p>
+               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
+                    <img src={img2} width={180} className='mx-auto'  />
+                    <p className='text-black text-center text-xl font-bold'>Champion Cameroon [<span className='text-sm text-yellow-700'>1</span>]</p>
                </div>
-             </div>
-           </Modal.Body>
-        </Modal>
-    </div>
+               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
+                    <img src={img3} width={130} className='mx-auto'  />
+                    <p className='text-black text-center text-xl font-bold'>Easter Cup [<span className='text-sm text-yellow-700'>3</span>]</p>
+               </div>
+               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
+                    <img src={img5} width={100} className='mx-auto'  />
+                    <p className='text-black text-center text-xl font-bold'>Caf Confederation [<span className='text-sm text-yellow-700'>1</span>]</p>
+               </div>
+               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
+                    <img src={img4} width={190} className='mx-auto'  />
+                    <p className='text-black text-center text-xl font-bold'>Interpoule [<span className='text-sm text-yellow-700'>2</span>]</p>
+               </div>
+               
+               <Modal className='sm:justify-center'
+                    show={showModal}
+                    onClose={()=> setshowModal(false)}
+                    popup size='sm'
+                    >
+                    <Modal.Header />
+                    <Modal.Body>
+                    <div className='text-center mx-auto'>
+                         <HiTrophy color='blue' className='h-20 w-20 mx-auto p-2'/>
+                         <div>
+                              <h1 className='text-lg'>
+                                   * 2020/2021 - Winner
+                              </h1>
+                                   <p>Player of the competition</p>
+                                   <p className='sm text-red-500'>Abdu Talla</p>
+                         </div>
+                         <div>
+                              <h1 className='text-lg'>
+                                   * 2022/2023 - Winner
+                              </h1>
+                                   <p>Player of the competition</p>
+                                   <p className='sm text-red-500'>Abdu Talla</p>
+                         </div>
+                    </div>
+                    </Modal.Body>
+               </Modal>
+          </div>
+     </div>
   )
 }

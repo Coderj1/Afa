@@ -52,7 +52,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
            className='flex-1 md:hidden inline'>
-            <img src={img1} alt="hero" width={550} className='' />
+            <img src={img1} alt="hero" width={450} className='' />
         </motion.div>
           <motion.div
           initial={{ opacity: 0, y: -100 }}
@@ -81,7 +81,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           className='flex-1 md:inline hidden'
           >
-            <img src={img1} alt="hero" width={550} className='' />
+            <img src={img1} alt="hero" width={500} className='' />
         </motion.div>
         </div>
         <motion.div
@@ -92,25 +92,25 @@ export default function Home() {
         >
            <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto  p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
            <img src={imgj} width={90} className='rounded-full'/>
-             <h1 className='text-sm font-bold text-white uppercase'>
+             <h1 className='text-sm font-bold uppercase'>
              Equipe de joueurs
              </h1>
            </div>
            <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto  p-3 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
              <img src={img2} width={90} className='rounded-full'/>
-             <h1 className='text-md font-bold text-white uppercase'>
-             meilleur joueur
+             <h1 className='text-md font-bold uppercase'>
+              meilleur joueur
              </h1>
            </div>
            <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
-             <HiTrophy color='white' size={50} />
-             <h1 className='text-md font-bold text-white uppercase'>
+             <HiTrophy color='yellow' size={50} />
+             <h1 className='text-md font-bold uppercase'>
              Salle des trophées
              </h1>
            </div>
            <div className="flex justify-between gap-3 items-center sm:w-72 mx-auto  p-5 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
            <img src={imgl} width={70} className='rounded-full'/>
-             <h1 className='text-xs font-bold text-white uppercase'>
+             <h1 className='text-xs font-bold uppercase'>
              Statistiques de l'équipe
              </h1>
            </div>
@@ -119,7 +119,7 @@ export default function Home() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-         className='uppercase sm:text-3xl text-xl max-w-5xl mx-auto p-3 text-white font-bold '>
+         className='uppercase sm:text-3xl text-xl max-w-5xl mx-auto p-3 text-blue-700 font-bold '>
            Actualite en bref
         </motion.h1>
         <motion.div
@@ -132,7 +132,7 @@ export default function Home() {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-         className='sm:text-3xl text-xl max-w-5xl mx-auto uppercase font-bold text-white m-2 p-2'>
+         className='sm:text-3xl text-xl max-w-5xl mx-auto uppercase font-bold text-blue-500 m-2 p-2'>
            Evenement de la Semaine
         </motion.div>
         <motion.div
@@ -142,13 +142,13 @@ export default function Home() {
         className='flex overflow-x-scroll scrollbar'>
          <SimpleSlider />
         </motion.div>
-        <div className='mx-auto uppercase text-white text-3xl font-bold max-w-5xl'>
+        <div className='mx-auto uppercase text-blue-500 text-3xl font-bold max-w-5xl'>
            Prochain Matchs
         </div>
         <div className='p-2'>
              <Matches />
         </div>
-        <div className='bg-gray-200 p-3 mx-auto max-w-6xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
+        <div className='bg-blue-700 p-3 mx-auto max-w-6xl items-center flex overflow-x-scroll scrollbar flex-col sm:flex-row'>
            <video
             autoPlay
             loop
@@ -159,15 +159,15 @@ export default function Home() {
            </video>
            <div className='mx-auto flex-1'>
             <div className='mx-auto'>
-              <p className='uppercase font-bold text-xl text-black text-center'>Champion Regional du littoral</p>
-              <p className='uppercase font-bold text-sm text-blue-700 text-center'>African Football Academy</p>
+              <p className='uppercase font-bold text-xl text-white text-center'>Champion Regional du littoral</p>
+              <p className='uppercase font-bold text-sm text-blue-300 text-center'>African Football Academy</p>
             </div>
            </div>
         </div>
-          <motion.h1 className='uppercase p-2 text-xl text-white font-bold max-w-2xl mx-auto'>
+          <motion.h1 className='uppercase p-2 text-xl text-blue-500 font-bold max-w-2xl mx-auto'>
              Programme partenaire
           </motion.h1>
-          <div className='bg-white'>
+          <div className='bg-gray-100'>
               <div className='flex max-w-2xl mx-auto gap-6 justify-between overflow-x-scroll scrollbar p-3'>
                 <span className='w-20'>
                    <img src={imgo} width={120} />
@@ -184,7 +184,7 @@ export default function Home() {
               </div>
           </div>
         <div>
-          <h1 className='uppercase text-3xl font-bold text-white text-center mt-2 mb-4 p-2'>Réalisation</h1>
+          <h1 className='uppercase text-3xl font-bold text-blue-500 text-center mt-2 mb-4 p-2'>Réalisation</h1>
           <div className="relative">
             <motion.div
               initial={{ opacity: 0 }}
@@ -222,7 +222,7 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-        <div className='uppercase font-bold mx-auto text-2xl max-w-4xl text-white p-2'>
+        <div className='uppercase font-bold mx-auto text-2xl max-w-4xl text-blue-500 p-4'>
            MultiMedia
         </div>
           <Media />
@@ -231,7 +231,7 @@ export default function Home() {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 3 }}
-          className='text-3xl font-bold text-white text-center mt-2 mb-4 uppercase'
+          className='text-3xl font-bold text-blue-500 text-center mt-2 mb-4 uppercase'
           >
            Catégorie et équipe
           </motion.h1>

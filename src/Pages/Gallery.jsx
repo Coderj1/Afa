@@ -15,7 +15,7 @@ export default function Gallery() {
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className='text-center text-4xl text-white font-bold p-3'>
+        className='text-center text-4xl text-blue-500 font-bold p-3'>
             Gallery
         </motion.h1>
         <motion.div
@@ -29,7 +29,7 @@ export default function Gallery() {
           transition={{ duration: 1 }}
           className='mx-auto w-72 hover:bg-white p-8 rounded-2xl '
           >
-            <img src={img1} alt="" width={300} height={300} className='hover:scale-110 rounded-3xl border-2 border-dashed border-red-200 p-1 rotate-6' />
+            <img src={img1} alt="" width={500} height={500} className='hover:scale-110 rounded-3xl border-2 border-dashed border-red-200 p-1 rotate-6' />
             <p className='rotate-6'>Lorem ipsum the reay kiwiu ray siiq yyq react vdev agiwvn becvvst khsmkd hgsjg jakak kas ksksh jshjkasgl</p>
           </motion.span>
           <motion.span
