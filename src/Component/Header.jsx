@@ -11,7 +11,7 @@ export default function Header() {
        animate={{ y: 0 }}
        transition={{ type: 'spring', stiffness: 120 }}
        >
-         <Navbar className='border-b-2 font-bold border-blue-300 '>
+         <Navbar className='border-b-2 font-bold border-blue-300'>
             <Navbar.Brand>
                 <img src={logo} alt="logo" width={40} className='rounded-full' />
             </Navbar.Brand>
@@ -25,9 +25,21 @@ export default function Header() {
                     Gallery
                  </Link>
                  </Navbar.Link>
-                 <Navbar.Link href="/stat">Stats</Navbar.Link>
-                 <Navbar.Link href="/about">About</Navbar.Link>
-                 <Navbar.Link href="/contact">Contact</Navbar.Link>
+                 <Navbar.Link>
+                  <Link to='/stat'>
+                      Stats
+                  </Link>
+                 </Navbar.Link>
+                 <Navbar.Link>
+                    <Link to='/about'>
+                      Profile
+                    </Link>
+                 </Navbar.Link>
+                 <Navbar.Link>
+                    <Link to='/contact'>
+                      Contact
+                    </Link>
+                 </Navbar.Link>
                 </Navbar.Collapse>
          </Navbar>
       </motion.div> 

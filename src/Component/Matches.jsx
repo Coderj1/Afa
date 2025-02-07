@@ -28,7 +28,7 @@ const Matches = () => {
                         </div>
                         <div className='mx-auto text-center'>
                             <p className='text-sm text-black'>Stade de Japoma</p>
-                            <p className='text-xs text-gray-400'>12 Mars 2024</p>
+                            <p className='text-xs text-gray-400'>12 Mars 2024 | 12H00</p>
                         </div>
                 </Link>
             </div>
@@ -49,7 +49,7 @@ const Matches = () => {
                 </div>
                 <div className='mx-auto text-center'>
                     <p className='text-sm text-black'>Stade Omnisport Douala</p>
-                    <p className='text-xs text-gray-400'>19 Mars 2024</p>
+                    <p className='text-xs text-gray-400'>19 Mars 2024| 17H00</p>
                 </div>
               </Link>
             </div>
@@ -70,7 +70,7 @@ const Matches = () => {
                 </div>
                 <div className='mx-auto text-center'>
                     <p className='text-sm text-black'>Stade de Olembe</p>
-                    <p className='text-xs text-gray-400'>30 Mars 2024</p>
+                    <p className='text-xs text-gray-400'>30 Mars 2024| 15H45</p>
                 </div>
                </Link>
             </div>
