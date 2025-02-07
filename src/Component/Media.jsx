@@ -1,7 +1,6 @@
 import React from 'react'
-import Slider from 'react-slick';
 import img1 from '../img/afa cham.mp4'
-import imgp from '../img/trophy/play2.png'
+import imgp from '../img/trophy/play.png'
 import '../App.css'; // Make sure to import your CSS here
 import { Link } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ export default function Media() {
                 </video>
                 <div className='absolute inset-0 flex items-center justify-center'>
                 <p className='text-white text-4xl opacity-75 group-hover:opacity-100 transition-opacity duration-300'>
-                    <img src={imgp} width={50} className='' />
+                    <img src={imgp} width={100} className='' />
                 </p>
                 </div>
                 <h1 className='z-1 group-hover:h-[100px] absolute bottom-[0px] 
@@ -37,7 +36,7 @@ export default function Media() {
                 </video>
                 <div className='absolute inset-0 flex items-center justify-center'>
                 <p className='text-white text-4xl opacity-75 group-hover:opacity-100 transition-opacity duration-300'>
-                    <img src={imgp} width={50} className='' />
+                    <img src={imgp} width={100} className='' />
                 </p>
                 </div>
                 <h1 className='z-1 group-hover:h-[100px] absolute bottom-[0px] 

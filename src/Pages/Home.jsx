@@ -13,16 +13,12 @@ import imgm from '../img/trophy/msi.png'
 import imgn from '../img/trophy/nike.png'
 import imgf from '../img/trophy/feca.png'
 import { HiEllipsisHorizontalCircle, HiTrophy } from "react-icons/hi2"
-import { GiWhirlpoolShuriken } from "react-icons/gi"
 import { Button} from 'flowbite-react'
 import { motion } from 'framer-motion';
-import { FaPlaystation } from "react-icons/fa6";
-import { HiAdjustments } from 'react-icons/hi'
 import SimpleSlider from '../Component/Slider'
 import Banner from '../Component/Banner'
 import { Link } from 'react-router-dom'
 import Media from '../Component/Media'
-import Carousel from '../Component/Carousel'
 import Matches from '../Component/Matches'
 
 export default function Home() {
