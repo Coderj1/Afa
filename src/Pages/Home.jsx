@@ -17,18 +17,36 @@ import { Link } from 'react-router-dom'
 import Media from '../Component/Media'
 import Matches from '../Component/Matches'
 import { databases } from '../AppwriteConfig'
+import { Query } from 'appwrite'
 
 export default function Home() {
 
   const [ partenaire, setPartenaire] = useState([])
   const [category, setCategory] = useState([])
+  const [hero, setHero] = useState([])
+
+  useEffect(() => {
+    const getHero = async () => {
+      try {
+        const response = await databases.listDocuments(
+          "67a5d22900142d063b7c", // Replace with your Database ID
+          "67a672de002469830598" // Replace with your Collection ID
+        );
+        setHero(response.documents); // Returns an array of documents
+      } catch (error) {
+        console.error("Error fetching collection:", error);
+      }
+    }
+    getHero();
+  }, []);
 
   useEffect(() => {
     const getPartenaire = async () => {
       try {
         const response = await databases.listDocuments(
           "67a5d22900142d063b7c", // Replace with your Database ID
-          "67a5decd001aa259503b" // Replace with your Collection ID
+          "67a5decd001aa259503b", // Replace with your Collection ID
+          [Query.limit(4)]
         );
         setPartenaire(response.documents); // Returns an array of documents
       } catch (error) {
@@ -68,19 +86,21 @@ export default function Home() {
 
   return (
     <div>
-        <div 
-         style={{
-          backgroundImage: `url(${images[currentImageIndex]})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-       className='flex md:flex-row flex-col items-center justify-center p-2'>
+        {
+           hero.map((head) => (
+            <div 
+             style={{
+              backgroundImage: `url(${images[currentImageIndex]})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+           className='flex md:flex-row flex-col items-center justify-center p-2'>
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
            className='flex-1 md:hidden inline'>
-            <img src={img1} alt="hero" width={450} className='' />
+            <img src={head.logo} alt="hero" width={450} className='rounded-full' />
         </motion.div>
           <motion.div
           initial={{ opacity: 0, y: -100 }}
@@ -88,11 +108,9 @@ export default function Home() {
           transition={{ duration: 1 }}
           className='flex-1'
           >
-            <h1 className='text-3xl font-bold text-center text-blue-500 uppercase'>AFRICAN FOOTBALL ACADEMY</h1>
+            <h1 className='text-3xl font-bold text-center text-blue-500 uppercase'>{head.hero_title}</h1>
             <p className='text-justify text-white mx-auto md:w-[490px] mb-2'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos
-            .
+              {head.hero_desc}
             </p>
             <div className='flex gap-3 justify-center sm:p-3 p-1'>
             <Link to='/gallery'>
@@ -109,16 +127,18 @@ export default function Home() {
           transition={{ duration: 1 }}
           className='flex-1 md:inline hidden'
           >
-            <img src={img1} alt="hero" width={500} className='' />
+            <img src={img1} alt="hero" width={500} className='rounded-full' />
         </motion.div>
         </div>
+          ))
+        }
         <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className='flex flex-wrap gap-2 max-w-7xl w-full relative mx-auto'
         >
-           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto  p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
            <img src={imgj} width={90} className='rounded-full'/>
              <h1 className='text-sm font-bold uppercase'>
              Equipe de joueurs

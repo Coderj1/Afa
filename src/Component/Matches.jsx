@@ -7,6 +7,7 @@ import img4 from '../img/apjs.png'
 import '../App.css'; // Make sure to import your CSS here
 import { Link } from 'react-router-dom';
 import { databases } from '../AppwriteConfig';
+import { Query } from 'appwrite';
 
 const Matches = () => {
 
@@ -17,7 +18,8 @@ const Matches = () => {
             try {
               const response = await databases.listDocuments(
                 "67a5d22900142d063b7c", // Replace with your Database ID
-                "67a5e0ea000aeb4ab1b6" // Replace with your Collection ID
+                "67a5e0ea000aeb4ab1b6", // Replace with your Collection ID
+                [Query.limit(4)]
               );
               setMatches(response.documents); // Returns an array of documents
             } catch (error) {
@@ -30,7 +32,7 @@ const Matches = () => {
   return (
     <div className='flex gap-5 max-w-7xl mx-auto p-5 overflow-x-scroll scrollbar'>
             { matches.map((match) => (
-             <div key={match.$id} className='p-2 bg-gray-100 mx-auto shadow-xl'>
+             <div key={match.$id} className='p-2 bg-gray-100 mx-auto text-2xl shadow-xl'>
                 <Link to={`/matchdet/${match.$id}`}>
                         <div className='flex justify-between items-center p-3 mx-auto gap-4'>
                             <span className='w-20'>

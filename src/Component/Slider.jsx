@@ -9,6 +9,7 @@ import '../App.css'; // Make sure to import your CSS here
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { databases } from '../AppwriteConfig';
+import { Query } from 'appwrite';
 
 const SimpleSlider = () => {
   
@@ -19,7 +20,8 @@ const SimpleSlider = () => {
       try {
         const response = await databases.listDocuments(
           "67a5d22900142d063b7c", // Replace with your Database ID
-          "67a5dd0f003e56bfca74" // Replace with your Collection ID
+          "67a5dd0f003e56bfca74", // Replace with your Collection ID
+          [Query.limit(3)]
         );
         setBlog(response.documents); // Returns an array of documents
       } catch (error) {

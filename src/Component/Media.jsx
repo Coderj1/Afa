@@ -5,6 +5,7 @@ import '../App.css'; // Make sure to import your CSS here
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { databases } from '../AppwriteConfig';
+import { Query } from 'appwrite';
 
 export default function Media() {
 
@@ -15,7 +16,8 @@ export default function Media() {
       try {
         const response = await databases.listDocuments(
           "67a5d22900142d063b7c", // Replace with your Database ID
-          "67a5ddd7001a703e0a08" // Replace with your Collection ID
+          "67a5ddd7001a703e0a08", // Replace with your Collection ID
+          [Query.limit(3)]
         );
         setVideo(response.documents); // Returns an array of documents
       } catch (error) {
@@ -37,7 +39,7 @@ export default function Media() {
                 </video>
             <h1 className='z-1 absolute bottom-[0px] 
             left-0 right-0 border border-teal-500  hover:bg-blue-400
-            text-black transition-all duration-300 bg-white text-center py-2
+            text-black transition-all font-bold duration-300 bg-white text-center py-2
             rounded-md !rounded-bl-none !rounded-br-none m-2 italic uppercase'>
                 {vid.title}
             </h1>
