@@ -1,32 +1,51 @@
 import React from 'react'
-import img1 from '../img/afa cham.mp4'
 import img2 from '../img/afabg.png'
 import Media from '../Component/Media'
 import { MdFacebook } from 'react-icons/md'
 import { FaXTwitter, FaYoutube } from 'react-icons/fa6'
-
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { databases } from '../AppwriteConfig'
+import ReactPlayer from 'react-player'
 
 export default function Play() {
+
+  const { videoId } = useParams();
+  const [highlight, setHighlight] = useState()
+
+  useEffect(() => {
+    const getvideo = async () => {
+      try {
+        const response = await databases.getDocument(
+          "67a5d22900142d063b7c", // Replace with your Database ID
+          "67a5ddd7001a703e0a08", // Replace with your Collection ID
+          videoId // Replace with your Document ID
+        );
+        setHighlight(response); // Returns an array of document
+
+      } catch (error) {
+        console.error("Error fetching collection:", error);
+      }
+    }
+    if(videoId) {
+      getvideo();
+    }
+  }, [videoId]);
+
   return (
     <div className='min-h-screen bg-img1 bg-cover mx-auto'>
       <div className='max-7xl mx-auto p-2'>
-         <video controls className='p-4 mx-auto'>
-            <source src={img1} width={800} />
-         </video> 
+           <ReactPlayer url={highlight?.video} controls className='mx-auto' />
          <span className='flex max-w-4xl mx-auto'>
-           <p className='uppercase text-xl font-bold text-blue-500'>equipe Complete de African Football academy</p>
+           <p className='uppercase text-xl font-bold text-blue-500'>{highlight?.title}</p>
         </span>
-        <p className='max-w-4xl mx-auto'>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at 
-            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
-            and going through the cites of the word in classical literature, discovered the undoubtable source.
-        </p>
+        <p className='max-w-4xl mx-auto'>{highlight?.desc}</p>
         <div className='flex gap-4 mt-1 p-3 justify-between mx-auto'>
             <div className='mx-auto flex rounded-full gap-1 text-blue-400 font-bold'>
-            <div className='w-8'>
+            <div className='w-10'>
                 <img src={img2}  />
             </div>
-               <h1 className='uppercase mt-1'>African Football Academy</h1>
+               <h1 className='uppercase sm:mt-2'>African Football Academy</h1>
             </div>
             <span className='flex gap-4 m-4 mx-auto mt-1'>
                 <MdFacebook size={20} color='blue' className='hover:scale-125' />

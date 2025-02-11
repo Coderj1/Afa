@@ -8,9 +8,22 @@ import Gallery from './Pages/Gallery'
 import Trophy from './Pages/Trophy'
 import Blog from './Pages/Blog'
 import Play from './Pages/Play'
-import Stat from './Pages/Stat'
 import About from './Pages/About'
 import Stats from './Pages/Stats'
+import Register from './Pages/Register'
+import Login from './Pages/Login'
+import Addblog from './Admin/Addblog'
+import AddCategory from './Admin/Addcategory'
+import AddGallery from './Admin/AddGallery'
+import AddVideo from './Admin/AddHightlight'
+import AddMatches from './Admin/AddMatches'
+import AddPartners from './Admin/Addpartners'
+import AddStats from './Admin/AddStats'
+import AddTrophy from './Admin/AddTrophy'
+import AddHero from './Admin/AddHero'
+import Dashboard from './Admin/Dashboard'
+import AdminRoute from './Admin/AdminRoute'
+import Account from './Component/Account'
 
 function App() {
 
@@ -20,14 +33,26 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/trophy" element={<Trophy />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/play" element={<Play />} />
-          <Route path="/matchdet" element={<Matchdetail />} />
-          <Route path="/stats" element={<Stat />} />
+          <Route path="/blog/:blogId" element={<Blog />} />
+          <Route path="/play/:videoId" element={<Play />} />
+          <Route path="/matchdet/:matchId" element={<Matchdetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/stat" element={<Stats />} />
+          <Route path="/account" element={<Account />} />
+            <Route path='/addblog' element={<Addblog />} />
+            <Route path='/addcat' element={<AddCategory />} />
+            <Route path='/addgal' element={<AddGallery />} />
+            <Route path='/addvid' element={<AddVideo />} />
+            <Route path='/addmatch' element={<AddMatches />} />
+            <Route path='/addpartners' element={<AddPartners />} />
+            <Route path='/addstats' element={<AddStats />} />
+            <Route path='/addtrophy' element={<AddTrophy />} />
+            <Route path='/addhero' element={<AddHero />} />
+            <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>

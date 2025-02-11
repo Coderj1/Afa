@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import img1 from '../img/afabg.png'
 import img2 from '../img/simba.png'
@@ -6,75 +6,50 @@ import img3 from '../img/canon.png'
 import img4 from '../img/apjs.png'
 import '../App.css'; // Make sure to import your CSS here
 import { Link } from 'react-router-dom';
+import { databases } from '../AppwriteConfig';
 
 const Matches = () => {
 
+    const [ matches, setMatches] = useState([])
+
+     useEffect(() => {
+          const getMatches = async () => {
+            try {
+              const response = await databases.listDocuments(
+                "67a5d22900142d063b7c", // Replace with your Database ID
+                "67a5e0ea000aeb4ab1b6" // Replace with your Collection ID
+              );
+              setMatches(response.documents); // Returns an array of documents
+            } catch (error) {
+              console.error("Error fetching collection:", error);
+            }
+          }
+          getMatches();
+        }, []);
+
   return (
     <div className='flex gap-5 max-w-7xl mx-auto p-5 overflow-x-scroll scrollbar'>
-            <div className='p-2 bg-gray-100 mx-auto shadow-xl'>
-                <Link to='/matchdet'>
+            { matches.map((match) => (
+             <div key={match.$id} className='p-2 bg-gray-100 mx-auto shadow-xl'>
+                <Link to={`/matchdet/${match.$id}`}>
                         <div className='flex justify-between items-center p-3 mx-auto gap-4'>
                             <span className='w-20'>
-                                <img src={img4} width={60} className='rounded-full mx-auto' />
-                                <p className='text-center uppercase text-sm'>APJS de Fou</p>
+                                <img src={match.home_team} width={60} className='rounded-full mx-auto' />
                             </span>
                             <span>
                                 VS
                             </span>
                             <span className='w-20'>
-                                <img src={img1} width={60} className='rounded-full mx-auto' />
-                                <p className='text-center uppercase text-sm'>AFA</p>
+                                <img src={match.away_team} width={60} className='rounded-full mx-auto' />
                             </span>
                         </div>
                         <div className='mx-auto text-center'>
-                            <p className='text-sm text-black'>Stade de Japoma</p>
-                            <p className='text-xs text-gray-400'>12 Mars 2024 | 12H00</p>
+                            <p className='text-sm text-black'>{match.stade}</p>
+                            <p className='text-xs text-gray-400'>{match.date} | {match.time}</p>
                         </div>
                 </Link>
-            </div>
-            <div className='p-2 bg-gray-100 mx-auto shadow-xl'>
-             <Link to='/matchdet'>
-                <div className='flex justify-between items-center p-3 mx-auto gap-4'>
-                    <span className='w-20'>
-                        <img src={img1} width={60} className='rounded-full mx-auto' />
-                        <p className='text-center uppercase text-sm'>AFA</p>
-                    </span>
-                    <span>
-                        VS
-                    </span>
-                    <span className='w-20'>
-                        <img src={img3} width={60} className='rounded-full mx-auto' />
-                        <p className='text-center uppercase text-sm'>Canon de Yaounde</p>
-                    </span>
-                </div>
-                <div className='mx-auto text-center'>
-                    <p className='text-sm text-black'>Stade Omnisport Douala</p>
-                    <p className='text-xs text-gray-400'>19 Mars 2024| 17H00</p>
-                </div>
-              </Link>
-            </div>
-            <div className='p-2 bg-gray-100 mx-auto shadow-xl'>
-              <Link to='/matchdet'>
-                <div className='flex justify-between items-center p-3 mx-auto gap-4'>
-                    <span className='w-20'>
-                        <img src={img2} width={60} className='rounded-full mx-auto' />
-                        <p className='text-center uppercase text-sm'>Simba fc</p>
-                    </span>
-                    <span>
-                        VS
-                    </span>
-                    <span className='w-20'>
-                        <img src={img1} width={60} className='rounded-full mx-auto' />
-                        <p className='text-center uppercase text-sm'>AFA</p>
-                    </span>
-                </div>
-                <div className='mx-auto text-center'>
-                    <p className='text-sm text-black'>Stade de Olembe</p>
-                    <p className='text-xs text-gray-400'>30 Mars 2024| 15H45</p>
-                </div>
-               </Link>
-            </div>
-        
+             </div>
+            ))}
     </div>
   );
 };

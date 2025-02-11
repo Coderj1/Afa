@@ -8,10 +8,6 @@ import img7 from '../img/afa2.jpg'
 import imgj from '../img/jessey.png'
 import imgl from '../img/lineup.png'
 import vid1 from '../img/afa trophy.mp4'
-import imgo from '../img/trophy/ola2.png'
-import imgm from '../img/trophy/msi.png'
-import imgn from '../img/trophy/nike.png'
-import imgf from '../img/trophy/feca.png'
 import { HiEllipsisHorizontalCircle, HiTrophy } from "react-icons/hi2"
 import { Button} from 'flowbite-react'
 import { motion } from 'framer-motion';
@@ -20,8 +16,44 @@ import Banner from '../Component/Banner'
 import { Link } from 'react-router-dom'
 import Media from '../Component/Media'
 import Matches from '../Component/Matches'
+import { databases } from '../AppwriteConfig'
 
 export default function Home() {
+
+  const [ partenaire, setPartenaire] = useState([])
+  const [category, setCategory] = useState([])
+
+  useEffect(() => {
+    const getPartenaire = async () => {
+      try {
+        const response = await databases.listDocuments(
+          "67a5d22900142d063b7c", // Replace with your Database ID
+          "67a5decd001aa259503b" // Replace with your Collection ID
+        );
+        setPartenaire(response.documents); // Returns an array of documents
+      } catch (error) {
+        console.error("Error fetching collection:", error);
+      }
+    }
+    getPartenaire();
+  }, []);
+
+  
+  useEffect(() => {
+    const getCategory = async () => {
+      try {
+        const response = await databases.listDocuments(
+          "67a5d22900142d063b7c", // Replace with your Database ID
+          "67a5e400002225ac64f4" // Replace with your Collection ID
+        );
+        setCategory(response.documents); // Returns an array of documents
+      } catch (error) {
+        console.error("Error fetching collection:", error);
+      }
+    }
+    getCategory();
+  }, []);
+
 
   const images = [img3, img5, img6, img7]; // Array of background images
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -165,18 +197,11 @@ export default function Home() {
           </motion.h1>
           <div className='bg-gray-100'>
               <div className='flex max-w-2xl mx-auto gap-6 justify-between overflow-x-scroll scrollbar p-3'>
-                <span className='w-20'>
-                   <img src={imgo} width={120} />
-                </span>
-                <span className='w-20'>
-                   <img src={imgm} width={100} />
-                </span>
-                <span className='w-28'>
-                   <img src={imgn} width={100} />
-                </span>
-                <span className='w-20'>
-                    <img src={imgf} width={70} />
-                </span>
+                { partenaire.map((image) => (
+                    <span key={image.$id} className='w-24'>
+                       <img src={image.image} width={100} className='rounded-full'/>
+                    </span>
+                ))}
               </div>
           </div>
         <div>
@@ -219,7 +244,7 @@ export default function Home() {
           </div>
         </div>
         <div className='uppercase font-bold mx-auto text-2xl max-w-4xl text-blue-500 p-4'>
-           MultiMedia
+           Highlight
         </div>
           <Media />
         <div>
@@ -231,88 +256,37 @@ export default function Home() {
           >
            Catégorie et équipe
           </motion.h1>
-          <motion.div
-          className='flex sm:flex-row flex-col justify-between gap-2 p-4'
-          
-          >
-           <div className="relative">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 3 }}
-              className="flex-1"
-            >
-              <img src={img5} alt="Achievement" width={650} height={600} className="sm:h-[370px]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="absolute top-0 bg-black bg-opacity-50 w-full text-center"
-            >
-              <div className="text-white mx-auto text-center p-1">
-                <motion.h1
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 3 }}
-                 className='sm:text-2xl text-center font-bold mb-4'>Category U12</motion.h1>
-              </div>
-            </motion.div>
-            </div>
-            <div className="relative">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 3 }}
-              className="flex-1"
-            >
-              <img src={img6} alt="Achievement" width={650} height={600} className="sm:h-[370px]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="absolute top-0 bg-black bg-opacity-50 w-full text-center"
-            >
-              <div className="text-white mx-auto text-center p-1">
-                <motion.h1
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 3 }}
-                 className='sm:text-2xl text-center font-bold mb-4'>Category U17</motion.h1>
-              </div>
-            </motion.div>
-            </div>
+          <motion.div className='flex sm:flex-row flex-col justify-between gap-2 p-4'>
+            {
+              category.map((cat) => (
+                <div key={cat.$id} className="relative">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 3 }}
+                  className="flex-1"
+                >
+                  <img src={cat.img} alt="Achievement" width={650} height={600} className="sm:h-[370px]" />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                  className="absolute top-0 bg-black bg-opacity-50 w-full text-center">
+                  <div className="text-white mx-auto text-center p-1">
+                    <motion.h1
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 3 }}
+                    className='sm:text-2xl text-center font-bold mb-4'>{cat.cat}
+                    </motion.h1>
+                  </div>
+                </motion.div>
+                </div>
+              )
+            )}
           </motion.div>
         </div>
-        <div>
-          <div className="relative m-3">
-          <div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 3 }}
-                className="flex-1"
-              >
-                <img src={img7} alt="Achievement" className="w-full" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="absolute top-0 bg-black bg-opacity-50 w-full text-center"
-              >
-                <div className="text-white mx-auto text-center p-1">
-                  <motion.h1
-                  initial={{ opacity: 0, x: -100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 3 }}
-                  className='sm:text-2xl text-center font-bold mb-4'>Category U20</motion.h1>
-                </div>
-              </motion.div>
-          </div>
-        </div>
-            </div>
     </div>
   )
 }

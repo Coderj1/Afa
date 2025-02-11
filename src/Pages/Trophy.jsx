@@ -6,41 +6,68 @@ import img4 from '../img/trophy/trophy 4.png'
 import img5 from '../img/trophy/trophy 5.png'
 import { Modal } from 'flowbite-react'
 import { HiTrophy } from 'react-icons/hi2'
+import { useEffect} from 'react';
+import { databases } from '../AppwriteConfig'
 
 export default function Trophy() {
 
      const [showModal, setshowModal] = useState(null)
+     const [ trophy, setTrophy] = useState([])
+     const [ trophydetails, setTrophydetails] = useState([])
+     const [trophyId, setTrophyId] = useState('')
+
+     useEffect(() => {
+          const getTrophy = async () => {
+            try {
+              const response = await databases.listDocuments(
+                "67a5d22900142d063b7c", // Replace with your Database ID
+                "67a5e2820028754122b7" // Replace with your Collection ID
+              );
+              setTrophy(response.documents); // Returns an array of documents
+            } catch (error) {
+              console.error("Error fetching collection:", error);
+            }
+          }
+          getTrophy();
+        }, []);
+
+        useEffect(() => {
+          const getTrophydetails = async () => {
+            try {
+              const response = await databases.getDocument(
+                "67a5d22900142d063b7c", // Replace with your Database ID
+                "67a5e2820028754122b7", // Replace with your Collection ID
+                trophyId // Replace with your Document ID
+              );
+              setTrophydetails(response); // Returns an array of documents
+            } catch (error) {
+              console.error("Error fetching collection:", error);
+            }
+          }
+          getTrophydetails();
+        }, []);
+
 
   return (
      <div>
           <div className='p-32 bg-img1 bg-cover'>
-               <h1 className='flex text-3xl text-center justify-center text-2xl font-bold uppercase'>
+               <h1 className='flex text-3xl text-center justify-centerfont-bold uppercase'>
                Trophy Room
                </h1>
          </div>
-           <h1 className='text-3xl text-center p-4 font-semibold uppercase underline'></h1>
            <div className='min-h-screen flex flex-wrap justify-between md:gap-6 gap-24 m-7 max-w-5xl mx-auto'>
-               <div onClick={() => {setshowModal(true)}} className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
-                    <img src={img1} width={100} className='mx-auto' />
-                    <p className='text-black text-center text-xl font-bold'>Champion Regional [<span className='text-sm text-yellow-700'>2</span>]</p>
-               </div>
-               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
-                    <img src={img2} width={180} className='mx-auto'  />
-                    <p className='text-black text-center text-xl font-bold'>Champion Cameroon [<span className='text-sm text-yellow-700'>1</span>]</p>
-               </div>
-               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
-                    <img src={img3} width={130} className='mx-auto'  />
-                    <p className='text-black text-center text-xl font-bold'>Easter Cup [<span className='text-sm text-yellow-700'>3</span>]</p>
-               </div>
-               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
-                    <img src={img5} width={100} className='mx-auto'  />
-                    <p className='text-black text-center text-xl font-bold'>Caf Confederation [<span className='text-sm text-yellow-700'>1</span>]</p>
-               </div>
-               <div className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
-                    <img src={img4} width={190} className='mx-auto'  />
-                    <p className='text-black text-center text-xl font-bold'>Interpoule [<span className='text-sm text-yellow-700'>2</span>]</p>
-               </div>
-               
+               {
+                    trophy.map((trop) => (
+                    <div key={trop.$id}  onClick={() =>{
+                         setTrophyId(trop.$id)
+                         setshowModal(true)
+                     }} className='mx-auto hover:bg-blue-600 h-fit hover:border-2 hover:border-white rounded-2xl p-4'>
+                         <img src={trop.trophy_img} width={100} className='mx-auto' />
+                         <p className='text-black text-center text-xl font-bold'>{trop.title} [<span className='text-sm text-yellow-700'>{trop.num_title}</span>]</p>
+                    </div>
+     
+                    ))
+               }               
                <Modal className='sm:justify-center'
                     show={showModal}
                     onClose={()=> setshowModal(false)}
@@ -48,23 +75,19 @@ export default function Trophy() {
                     >
                     <Modal.Header />
                     <Modal.Body>
-                    <div className='text-center mx-auto'>
-                         <HiTrophy color='blue' className='h-20 w-20 mx-auto p-2'/>
-                         <div>
-                              <h1 className='text-lg'>
-                                   * 2020/2021 - Winner
-                              </h1>
-                                   <p>Player of the competition</p>
-                                   <p className='sm text-red-500'>Abdu Talla</p>
-                         </div>
-                         <div>
-                              <h1 className='text-lg'>
-                                   * 2022/2023 - Winner
-                              </h1>
-                                   <p>Player of the competition</p>
-                                   <p className='sm text-red-500'>Abdu Talla</p>
-                         </div>
-                    </div>
+                         {
+                              trophydetails.map((t) => (
+                              <div key={t.$id} className='text-center mx-auto'>
+                                   <img src={t.trophy_img} color='blue' className='w-20 mx-auto p-2'/>
+                                             <p className='text-xl text-red-500'>{t.title}</p>
+                                   <div>
+                                        <h1 className='text-lg'>
+                                             {t.year} - Winner
+                                        </h1>
+                                   </div>
+                              </div>
+                              ))
+                         }
                     </Modal.Body>
                </Modal>
           </div>
