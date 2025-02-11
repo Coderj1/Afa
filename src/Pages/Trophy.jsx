@@ -1,11 +1,5 @@
 import React, { useState } from 'react'
-import img1 from '../img/trophy/trophy.png'
-import img2 from '../img/trophy/trophy 2.png'
-import img3 from '../img/trophy/trophy 3.png'
-import img4 from '../img/trophy/trophy 4.png'
-import img5 from '../img/trophy/trophy 5.png'
 import { Modal } from 'flowbite-react'
-import { HiTrophy } from 'react-icons/hi2'
 import { useEffect} from 'react';
 import { databases } from '../AppwriteConfig'
 
@@ -13,7 +7,7 @@ export default function Trophy() {
 
      const [showModal, setshowModal] = useState(null)
      const [ trophy, setTrophy] = useState([])
-     const [ trophydetails, setTrophydetails] = useState([])
+     const [ trophydetails, setTrophydetails] = useState('')
      const [trophyId, setTrophyId] = useState('')
 
      useEffect(() => {
@@ -45,7 +39,7 @@ export default function Trophy() {
             }
           }
           getTrophydetails();
-        }, []);
+        }, [trophyId]);
 
 
   return (
@@ -75,19 +69,15 @@ export default function Trophy() {
                     >
                     <Modal.Header />
                     <Modal.Body>
-                         {
-                              trophydetails.map((t) => (
-                              <div key={t.$id} className='text-center mx-auto'>
-                                   <img src={t.trophy_img} color='blue' className='w-20 mx-auto p-2'/>
-                                             <p className='text-xl text-red-500'>{t.title}</p>
+                              <div className='text-center mx-auto'>
+                                   <img src={trophydetails.trophy_img} color='blue' className='w-20 mx-auto p-2'/>
+                                             <p className='text-xl text-red-500'>{trophydetails.title}</p>
                                    <div>
                                         <h1 className='text-lg'>
-                                             {t.year} - Winner
+                                             {trophydetails.year} - Winner
                                         </h1>
                                    </div>
                               </div>
-                              ))
-                         }
                     </Modal.Body>
                </Modal>
           </div>
