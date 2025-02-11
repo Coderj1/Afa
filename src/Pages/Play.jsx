@@ -35,7 +35,9 @@ export default function Play() {
   return (
     <div className='min-h-screen bg-img1 bg-cover mx-auto'>
       <div className='max-7xl mx-auto p-2'>
-           <ReactPlayer url={highlight?.video} controls className='mx-auto' />
+        <div className='mx-auto p-24'>
+           <ReactPlayer url={highlight?.video} controls className='w-fit' />
+        </div>
          <span className='flex max-w-4xl mx-auto'>
            <p className='uppercase text-xl font-bold text-blue-500'>{highlight?.title}</p>
         </span>

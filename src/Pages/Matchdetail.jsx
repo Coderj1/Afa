@@ -35,8 +35,8 @@ export default function Matchdetail() {
   }, [matchId]);
 
   return (
-    <div className='bg-img2 bg-cover md:p-20 min-h-screen'>
-    <div className='mx-auto max-w-3xl bg-white p-2 border-dashed border-4 border-blue-500 shadow-xl'>
+    <div className='bg-img2 bg-cover md:p-20 p-5 min-h-screen'>
+    <div className='mx-auto max-w-3xl bg-white p-3 border-dashed border-4 border-blue-500 shadow-xl'>
         <div>
             <h1 className='text-center text-2xl font-bold text-blue-500'>Upcoming Match</h1>
         </div>
