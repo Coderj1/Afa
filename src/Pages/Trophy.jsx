@@ -45,7 +45,7 @@ export default function Trophy() {
   return (
      <div>
           <div className='p-32 bg-img1 bg-cover'>
-               <h1 className='flex text-3xl text-center justify-centerfont-bold uppercase'>
+               <h1 className='flex text-3xl text-center justify-center font-bold uppercase'>
                Trophy Room
                </h1>
          </div>
