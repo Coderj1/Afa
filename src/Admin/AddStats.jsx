@@ -93,6 +93,7 @@ const handleSubmit = async (e) => {
                 nationality,
                 category,
                 player: image,
+                createdAt: new Date().toISOString()
             }
         );
 

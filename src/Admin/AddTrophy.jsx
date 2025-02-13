@@ -90,6 +90,7 @@ const handleSubmit = async (e) => {
                 player_competition,
                 year,
                 trophy_img: image,
+                createdAt: new Date().toISOString()
             }
         );
 

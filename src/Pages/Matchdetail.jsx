@@ -35,28 +35,48 @@ export default function Matchdetail() {
   }, [matchId]);
 
   return (
-    <div className='bg-img2 bg-cover md:p-20 p-5 min-h-screen'>
-    <div className='mx-auto max-w-3xl bg-white p-3 border-dashed border-4 border-blue-500 shadow-xl'>
+    <div className='bg-img3 bg-cover min-h-screen flex flex-col items-center justify-center'>
+    <div className='mx-auto max-w-5xl bg-white p-3 border-dashed border-4 border-blue-500 shadow-xl'>
         <div>
             <h1 className='text-center text-2xl font-bold text-blue-500'>Upcoming Match</h1>
         </div>
         <div className='flex justify-between items-center p-3 gap-4 max-w-xl mx-auto'>
-                    <span className='w-40'>
-                        <img src={match?.home_team} width={200} className='rounded-2xl mx-auto' />
-                        <p className='text-center uppercase text-sm font-bold'>{match?.home_name}</p>
+                    <span className=''>
+                        <img src={match?.home_team} width={200} className='rounded-2xl mx-auto w-40' />
+                        <p className='text-center uppercase text-sm font-bold w-full'>{match?.home_name}</p>
                     </span>
                     <span className='text-4xl'>
                         -
                     </span>
-                    <span className='w-40'>
-                        <img src={match?.away_team} width={200} className='rounded-2xl mx-auto' />
-                        <p className='text-center uppercase text-sm font-bold'>{match?.away_name}</p>
+                    <span className=''>
+                        <img src={match?.away_team} width={200} className='rounded-2xl mx-auto w-40' />
+                        <p className='text-center uppercase text-sm font-bold w-32'>{match?.away_name}</p>
                     </span>
         </div>
         <div className='mx-auto text-center'>
-                    <p></p>
+                    <p className='font-bold text-gray-500'>{match?.arbitre}</p>
                     <p className='text-black font-bold text-sm'>{match?.stade}</p>
                     <p className='font-semibold text-gray-400'>{match?.date} | {match?.time}</p>
+        </div>
+        <div className='p-2 flex justify-between'>
+          <div className='p-4'>
+            <h1 className='font-semibold'>Category</h1>
+            <p className='ml-3 text-gray-500'>{match?.category}</p>
+          </div>
+          <div className='p-4'>
+            <h1 className='font-semibold'>Ticket</h1>
+            <p className='ml-3 text-gray-500'>{match?.ticket}</p>
+          </div>
+        </div>
+        <div className='flex justify-between w-80 mx-auto'>
+          <div className='p-4'>
+            <h1 className='font-semibold'>{match?.home_name} Coach</h1>
+            <p className='text-gray-500'>{match?.home_coach}</p>
+          </div>
+          <div className='p-4'>
+            <h1 className='font-semibold'>{match?.away_name} Coach</h1>
+            <p className='text-gray-500'>{match?.away_coach}</p>
+          </div>
         </div>
     </div>
     </div>

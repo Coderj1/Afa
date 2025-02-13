@@ -82,7 +82,8 @@ const handleSubmit = async (e) => {
             ID.unique(),
             {
                 title,
-                img: image
+                img: image,
+                createdAt: new Date().toISOString()
             }
         );
 

@@ -21,7 +21,10 @@ const SimpleSlider = () => {
         const response = await databases.listDocuments(
           "67a5d22900142d063b7c", // Replace with your Database ID
           "67a5dd0f003e56bfca74", // Replace with your Collection ID
-          [Query.limit(3)]
+          [
+            Query.limit(3),
+            Query.orderDesc('createdAt')
+          ]
         );
         setBlog(response.documents); // Returns an array of documents
       } catch (error) {
@@ -38,7 +41,7 @@ const SimpleSlider = () => {
             <div className='group relative w-full h-[330px] hover:border-2
             border-teal-400 overflow-hidden sm:w-[340px] bg-blue-700 rounded-md'>
             <Link to={`/blog/${blog.$id}`}>
-            <img src={blog.img} className='h-[260px] w-full object-contain' />
+            <img src={blog.img} className='w-full object-cover' />
             <h1 className='z-1 absolute bottom-[0px] 
             left-0 right-0 border border-teal-500  hover:bg-blue-400
             text-black transition-all duration-300 bg-white text-center py-2

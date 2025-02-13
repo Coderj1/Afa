@@ -84,7 +84,8 @@ const handleSubmit = async (e) => {
             {
                 hero_title: title,
                 hero_desc: desc,
-                logo: image
+                logo: image,
+                createdAt: new Date().toISOString()
             }
         );
 

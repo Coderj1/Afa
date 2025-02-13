@@ -13,6 +13,11 @@ function AddMatches() {
   const [stade, setStade] = useState('')
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
+  const [arbitre, setArbitre] = useState('')
+  const [category, setCategory] = useState('')
+  const [ticket, setTicket] = useState('')
+  const [home_coach, setHome_coach] = useState('')
+  const [away_coach, setAway_coach] = useState('')
   const [home_name, setHome_name] = useState('')
   const [away_name, setAway_name] = useState('')
   const [homeimage, sethomeImg] = useState(null);  // Selected image state
@@ -132,10 +137,16 @@ const handleSubmit = async (e) => {
                 stade,
                 time,
                 date,
+                arbitre,
+                category,
+                ticket,
                 home_name,
                 away_name,
                 home_team: homeimage,
-                away_team: awayimage
+                away_team: awayimage,
+                home_coach,
+                away_coach,
+                createdAt: new Date().toISOString()
             }
         );
 
@@ -206,6 +217,36 @@ const handleSubmit = async (e) => {
           className='mb-3'
           value={time}
           onChange={(e) => setTime(e.target.value)}
+        />
+        <TextInput type='text'
+          placeholder='Arbitre'
+          className='mb-3'
+          value={arbitre}
+          onChange={(e) => setArbitre(e.target.value)}
+        />
+        <TextInput type='text'
+          placeholder='Category'
+          className='mb-3'
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+        <TextInput type='text'
+          placeholder='Ticket'
+          className='mb-3'
+          value={ticket}
+          onChange={(e) => setTicket(e.target.value)}
+        />
+        <TextInput type='text'
+          placeholder='Home Coach'
+          className='mb-3'
+          value={home_coach}
+          onChange={(e) => setHome_coach(e.target.value)}
+        />
+        <TextInput type='text'
+          placeholder='Away coach'
+          className='mb-3'
+          value={away_coach}
+          onChange={(e) => setAway_coach(e.target.value)}
         />
         <div className='flex md:flex-row flex-col gap-2 mx-auto items-center'>
                <span>

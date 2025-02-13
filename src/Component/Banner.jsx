@@ -16,7 +16,10 @@ export default function Banner() {
         const response = await databases.listDocuments(
           "67a5d22900142d063b7c", // Replace with your Database ID
           "67a5dd0f003e56bfca74", // Replace with your Collection ID
-          [Query.limit(1)]
+          [
+            Query.limit(1),
+            Query.orderDesc('createdAt')
+          ]
         );
         setTBlog(response.documents); // Returns an array of documents
       } catch (error) {

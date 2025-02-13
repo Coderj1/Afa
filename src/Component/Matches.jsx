@@ -19,7 +19,10 @@ const Matches = () => {
               const response = await databases.listDocuments(
                 "67a5d22900142d063b7c", // Replace with your Database ID
                 "67a5e0ea000aeb4ab1b6", // Replace with your Collection ID
-                [Query.limit(4)]
+                [
+                  Query.limit(4),
+                  Query.orderDesc('createdAt')
+                ]
               );
               setMatches(response.documents); // Returns an array of documents
             } catch (error) {
@@ -36,13 +39,13 @@ const Matches = () => {
                 <Link to={`/matchdet/${match.$id}`}>
                         <div className='flex justify-between items-center p-3 mx-auto gap-4'>
                             <span className='w-20'>
-                                <img src={match.home_team} width={60} className='rounded-full mx-auto' />
+                                <img src={match.home_team} width={60} className='rounded-2xl mx-auto' />
                             </span>
                             <span>
                                 VS
                             </span>
                             <span className='w-20'>
-                                <img src={match.away_team} width={60} className='rounded-full mx-auto' />
+                                <img src={match.away_team} width={60} className='mx-auto rounded-2xl' />
                             </span>
                         </div>
                         <div className='mx-auto text-center'>

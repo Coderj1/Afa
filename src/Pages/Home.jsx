@@ -46,7 +46,10 @@ export default function Home() {
         const response = await databases.listDocuments(
           "67a5d22900142d063b7c", // Replace with your Database ID
           "67a5decd001aa259503b", // Replace with your Collection ID
-          [Query.limit(4)]
+          [
+            Query.limit(4),
+            Query.orderDesc('createdAt')
+          ]
         );
         setPartenaire(response.documents); // Returns an array of documents
       } catch (error) {
@@ -219,7 +222,7 @@ export default function Home() {
               <div className='flex max-w-2xl mx-auto gap-6 justify-between overflow-x-scroll scrollbar p-3'>
                 { partenaire.map((image) => (
                     <span key={image.$id} className='w-24'>
-                       <img src={image.image} width={100} className='rounded-full'/>
+                       <img src={image.image} width={100} />
                     </span>
                 ))}
               </div>

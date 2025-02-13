@@ -84,7 +84,8 @@ const handleSubmit = async (e) => {
             {
                 title,
                 desc,
-                img: image
+                img: image,
+                createdAt: new Date().toISOString()
             }
         );
 
@@ -120,7 +121,7 @@ const handleSubmit = async (e) => {
               accept='image/*'
               onChange={handleImageChange} />
           </div>
-          <TextInput type='text'
+          <Textarea type='text'
             placeholder='desc'
             className='mb-3'
             value={desc}

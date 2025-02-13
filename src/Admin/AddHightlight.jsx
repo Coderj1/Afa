@@ -84,7 +84,8 @@ const handleSubmit = async (e) => {
             {
                 title,
                 desc,
-                video: vid
+                video: vid,
+                createdAt: new Date().toISOString()
             }
         );
 

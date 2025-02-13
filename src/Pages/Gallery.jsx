@@ -8,6 +8,7 @@ import img5 from '../img/afa u12.jpg'
 import img6 from '../img/afa3.jpg'
 import img7 from '../img/afa2.jpg'
 import { databases } from '../AppwriteConfig';
+import { Query } from 'appwrite';
 export default function Gallery() {
 
   const [ gallery, setGallery] = useState([])
@@ -17,7 +18,8 @@ export default function Gallery() {
             try {
               const response = await databases.listDocuments(
                 "67a5d22900142d063b7c", // Replace with your Database ID
-                "67a6838b002912b358db" // Replace with your Collection ID
+                "67a6838b002912b358db", // Replace with your Collection ID
+                [Query.orderDesc('createdAt')]
               );
               setGallery(response.documents); // Returns an array of documents
             } catch (error) {
@@ -48,7 +50,7 @@ export default function Gallery() {
             <motion.span
             whileHover={{ rotate: 360 }}
             transition={{ duration: 1 }}
-            className='mx-auto w-72 hover:bg-white p-8 rounded-2xl '
+            className='mx-auto w-72 hover:bg-white hover:h-fit p-8 rounded-2xl '
             >
               <img src={gall.img} alt="" width={500} height={500} className='hover:scale-110 rounded-3xl border-2 border-dashed border-red-200 p-1 rotate-6' />
               <p className='rotate-6'>{gall.title}</p>

@@ -4,12 +4,21 @@ import Slider from '../Component/Slider'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { account, databases } from '../AppwriteConfig'
+import { Button, Textarea } from 'flowbite-react'
+import { IoMdSend } from "react-icons/io"
+import { toast, ToastContainer } from 'react-toastify'
+import { ID, Query } from 'appwrite'
+import moment from 'moment/moment'
+
 export default function Blog() {
 
   const { blogId } = useParams();
   const [blogdetail, setBlogdetail] = useState(null)
   const [like, setLike] = useState()
   const [isLiked, setIsLiked] = useState(true)
+  const [comment, setComment] = useState('')
+  const [comments, setComments] = useState([])
+  const [ success, setSuccess ] = useState(false)
 
   useEffect(() => {
     const getBlogdetail = async () => {
@@ -83,9 +92,75 @@ export default function Blog() {
     }
   };
 
+  useEffect(() => {
+    const getComment = async () => {
+      try {
+        const response = await databases.listDocuments(
+          "67a5d22900142d063b7c", // Replace with your Database ID
+          "67ac3c10002749cffd72", // Replace with your Collection ID
+          [
+            Query.equal('blogId', blogId),
+            Query.orderDesc('createdAt')
+          ]
+        );
+        setComments(response.documents); // Returns an array of documents
+      } catch (error) {
+        console.error("Error fetching collection:", error);
+      }
+    }
+    getComment();
+  }, []);
+
+  const handleComment = async (e) => {
+    e.preventDefault();
+
+    try {
+        const user = await account.get();
+        const userId = user.$id;
+
+        if (!comment.trim()) { // ✅ Prevent empty comments
+            toast.error("Comment cannot be empty!");
+            return;
+        }
+
+        const response = await databases.createDocument(
+            "67a5d22900142d063b7c",
+            "67ac3c10002749cffd72",
+            ID.unique(),
+            {
+                blogId: blogId,
+                userId: userId,
+                comment: comment, // ✅ Use correct state
+                createdAt: new Date().toISOString()
+            }
+        );
+
+        console.log(response);
+        toast.success("Comment added........!!!");
+        setComment(""); // ✅ Clear input after submission
+        const getComment = async () => {
+          try {
+            const response = await databases.listDocuments(
+              "67a5d22900142d063b7c", // Replace with your Database ID
+              "67ac3c10002749cffd72", // Replace with your Collection ID
+              [
+                Query.equal('blogId', blogId),
+              ]
+            );
+            setComments(response.documents); // Returns an array of documents
+          } catch (error) {
+            console.error("Error fetching collection:", error);
+          }
+        }
+        getComment();
+    } catch (err) {
+        toast.error("Failed: " + err.message);
+    }
+};
 
   return (
     <>
+      <ToastContainer />
           <div
           style={{
                 backgroundImage: `url(${blogdetail?.img})`,
@@ -93,28 +168,50 @@ export default function Blog() {
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
               }} >
-      <div className='mx-auto max-w-5xl p-1 opacity-90 pt-72'>
-          <div className='min-h-screen p-3 mx-auto max-w-5xl flex flex-col'>
+          <div className='min-h-screen p-3 mx-auto pt-72 opacity-90 max-w-5xl flex flex-col'>
             <div className='bg-white p-2 border-1 rounded-tl-3xl rounded-tr-3xl'>
+              <img src={blogdetail?.img} className='inline sm:hidden w-fit p-2' />
               <span className='flex justify-between max-w-2xl mx-auto'>
                 <p className='uppercase text-xl font-bold text-blue-500'>{blogdetail?.title}</p>
                 <span className='flex gap-1'>
                  <FaThumbsUp onClick={updateLike} className='mt-1 cursor-pointer' size={18}/>
-                 <p className='mt-1'>{like} {
-                  isLiked ?  (blogdetail?.like.length) : <p></p> }</p>
+                 <p className='mt-1'>
+                  {like} 
+                  {
+                  isLiked ?  
+                     (blogdetail?.like.length) :
+                     (<p></p>)
+                  }
+                  </p>
                 </span>
               </span>
                 <p className='max-w-3xl mx-auto'>{blogdetail?.desc}</p>
-            <div className='p-2'>
-              <p className='uppercase text-xl font-bold p-1'>
-                  Evenement Associes
-              </p>
-              <Slider />
-              </div>
+                <div className='max-w-xl p-2 border-2 rounded-xl mx-auto'>
+                  <h1 className='text-xl font-bold'>Comment</h1>
+                  <div>
+                    <div className='flex'>
+                      <Textarea 
+                        className="m-1"
+                        placeholder="Comment here..."
+                        value={comment} // ✅ Use comment state
+                        onChange={(e) => setComment(e.target.value)} // ✅ Update state on change
+                      />
+                        <IoMdSend size={40} color='blue' onClick={handleComment} className='mt-3 cursor-pointer' />
+                    </div>
+                     {
+                      comments.map((com) =>(
+                        <div className='p-2 flex justify-between'>
+                           <h1 className='text-xs'>{com.comment}</h1>
+                           <h1 className='text-xs'>{moment(com.createdAt).fromNow()}</h1>
+                        </div>
+                      ))
+                     }
+                  </div>
+                  {blogdetail?.comment}
+                </div>
             </div>
           </div>
           </div>
-      </div>
     </>
   )
 }

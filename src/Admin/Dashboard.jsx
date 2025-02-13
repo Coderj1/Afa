@@ -170,7 +170,7 @@ export default function Dashboard() {
           rounded-md shadow-sm h-fit'>
           <div className='flex justify-between'>
               <div>
-                  <h3 className='text-gray-500 text-md uppercase font-semibold'>Total Gallery</h3>
+                  <h3 className='text-gray-500 text-md uppercase font-semibold'>Gallery</h3>
                   <p className='text-2xl'>{gallery.length}</p>
               </div>
               <FcGallery  className=' text-white

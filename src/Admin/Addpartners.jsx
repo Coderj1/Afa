@@ -80,7 +80,8 @@ const handleSubmit = async (e) => {
             '67a5decd001aa259503b',
             ID.unique(),
             {
-                image: image
+                image: image,
+                createdAt: new Date().toISOString()
             }
         );
 
