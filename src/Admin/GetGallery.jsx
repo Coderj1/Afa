@@ -1,16 +1,20 @@
-import { Table } from 'flowbite-react';
+import { Button, Modal, Table } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import DashSidebar from '../Component/Dashsidebar';
 import { account, databases } from '../AppwriteConfig';
 import { Query } from 'appwrite';
 import { FaPencilAlt } from 'react-icons/fa';
 import { IoReceipt } from 'react-icons/io5';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../img/acess denied.png'
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { toast } from 'react-toastify';
 
 export default function GetGallery() {
     const [ gallery, setGallery] = useState([])
     const [userData, setUserData] = useState()
+    const [showDelete, setShowDelete] = useState(false)
+    const [deleteGalleryId, setDeleteGalleryId] = useState()
 
   useEffect(() => {
     const getData = async () => {
@@ -37,6 +41,21 @@ export default function GetGallery() {
       }
       getGallery();
     }, []);
+
+    const handleDelete = async () => {
+      setShowDelete(false)
+      try {
+        await databases.deleteDocument(
+          "67a5d22900142d063b7c", // Replace with your Database ID
+          "67a6838b002912b358db", // Replace with your Collection ID
+          deleteGalleryId // The document ID to delete
+        );
+        setGallery((recent) =>
+          recent.filter((gallery) => gallery.$id !== deleteGalleryId))
+      } catch (error) {
+        toast.error("Error deleting document:", error);
+      }
+    }
 
   return (
     <>
@@ -69,10 +88,17 @@ export default function GetGallery() {
                                   <img src={gal?.img} width={100} />
                                 </Table.Cell>
                                 <Table.Cell>
-                                  <span className='flex gap-2'>
-                                    <FaPencilAlt />
-                                    <IoReceipt />
-                                  </span>
+                                <span className='flex gap-2'>
+                                        <Link to={`/updategallery/${gal?.$id}`}>
+                                          <FaPencilAlt />
+                                        </Link>
+                                        <span onClick={() => {
+                                          setShowDelete(true)
+                                          setDeleteGalleryId(gal?.$id)
+                                        }}>
+                                        <IoReceipt />
+                                        </span>
+                                      </span>
                                 </Table.Cell>
                               </Table.Row>
                       ))
@@ -80,6 +106,32 @@ export default function GetGallery() {
                           </Table.Body>
                       </Table>
           </div>
+          <Modal
+                    show={showDelete}
+                    onClose={()=> setShowDelete(false)}
+                    popup size='sm'
+                    >
+                        <Modal.Header />
+                        <Modal.Body>
+                        <div className='text-center mx-auto'>
+                           <HiOutlineExclamationCircle className='h-14 w-14 mx-auto'/>
+                            <h1 className='mb-2'>
+                                 Do you want to delete this gallery
+                            </h1>
+                             <div className='flex gap-3 justify-center mb-2'>
+                                <Button 
+                                onClick={handleDelete} color='success'>
+                                    Yes, I'm Sure
+                                </Button>
+                                <Button color='failure'
+                                onClick={()=> setShowDelete(false)}
+                                >
+                                    No, Abort
+                                </Button>
+                             </div>
+                        </div>
+                        </Modal.Body>
+                    </Modal>
           </div>
       </div>
     ) : (

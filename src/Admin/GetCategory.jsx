@@ -1,16 +1,19 @@
-import { Table } from 'flowbite-react';
+import { Button, Modal, Table } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import DashSidebar from '../Component/Dashsidebar';
 import { account, databases } from '../AppwriteConfig';
 import { Query } from 'appwrite';
 import { FaPencilAlt } from 'react-icons/fa';
 import { IoReceipt } from 'react-icons/io5';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../img/acess denied.png'
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 export default function GetCategory() {
     const [ category, setCategory] = useState([])
     const [userData, setUserData] = useState()
+    const [showDelete, setShowDelete] = useState(false)
+    const [deleteCategoryId, setDeleteCategoryId] = useState('')
 
   useEffect(() => {
     const getData = async () => {
@@ -37,6 +40,21 @@ export default function GetCategory() {
       }
       getCategory();
     }, []);
+
+    const handleDelete = async () => {
+      setShowDelete(false)
+      try {
+        await databases.deleteDocument(
+          "67a5d22900142d063b7c", // Replace with your Database ID
+          "67a5e400002225ac64f4", // Replace with your Collection ID
+          deleteCategoryId // The document ID to delete
+        );
+        setCategory((recent) =>
+          recent.filter((cat) => cat.$id !== deleteCategoryId))
+      } catch (error) {
+        toast.error("Error deleting document:", error);
+      }
+    }
 
   return (
     <>
@@ -69,10 +87,17 @@ export default function GetCategory() {
                                   <img src={cat?.img} width={100} />
                                 </Table.Cell>
                                 <Table.Cell>
-                                  <span className='flex gap-2'>
-                                    <FaPencilAlt />
-                                    <IoReceipt />
-                                  </span>
+                                <span className='flex gap-2'>
+                                        <Link to={`/updatecategory/${cat?.$id}`}>
+                                          <FaPencilAlt />
+                                        </Link>
+                                        <span onClick={() => {
+                                          setShowDelete(true)
+                                          setDeleteCategoryId(cat?.$id)
+                                        }}>
+                                        <IoReceipt />
+                                        </span>
+                                      </span>
                                 </Table.Cell>
                               </Table.Row>
                       ))
@@ -80,6 +105,32 @@ export default function GetCategory() {
                           </Table.Body>
                       </Table>
           </div>
+          <Modal
+                    show={showDelete}
+                    onClose={()=> setShowDelete(false)}
+                    popup size='sm'
+                    >
+                        <Modal.Header />
+                        <Modal.Body>
+                        <div className='text-center mx-auto'>
+                           <HiOutlineExclamationCircle className='h-14 w-14 mx-auto'/>
+                            <h1 className='mb-2'>
+                                 Do you want to delete this category
+                            </h1>
+                             <div className='flex gap-3 justify-center mb-2'>
+                                <Button 
+                                onClick={handleDelete} color='success'>
+                                    Yes, I'm Sure
+                                </Button>
+                                <Button color='failure'
+                                onClick={()=> setShowDelete(false)}
+                                >
+                                    No, Abort
+                                </Button>
+                             </div>
+                        </div>
+                        </Modal.Body>
+                    </Modal>
           </div>
       </div>
     ) : (

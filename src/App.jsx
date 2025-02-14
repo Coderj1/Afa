@@ -33,6 +33,7 @@ import GetPartners from './Admin/GetPartners'
 import GetHero from './Admin/GetHero'
 import GetStats from './Admin/GetStats'
 import GetTrophy from './Admin/GetTrophy'
+import UpdateBlog from './Admin/UpdateBlog'
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
             <Route path="/hero" element={<GetHero />} />
             <Route path="/stats" element={<GetStats />} />
             <Route path="/trophys" element={<GetTrophy />} />
+            <Route path="/updateblog/:blogId" element={<UpdateBlog />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>

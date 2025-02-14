@@ -1,4 +1,4 @@
-import { Table } from 'flowbite-react';
+import { Button, Modal, Table } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import DashSidebar from '../Component/Dashsidebar';
 import { account, databases } from '../AppwriteConfig';
@@ -8,10 +8,13 @@ import { IoReceipt } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import logo from '../img/acess denied.png'
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 export default function GetTrophy() {
     const [ trophy, setTrophy] = useState([])
     const [userData, setUserData] = useState()
+    const [showDelete, setShowDelete] = useState(false)
+    const [deleteTrophyId, setDeleteTrophyId] = useState()
 
   useEffect(() => {
     const getData = async () => {
@@ -38,6 +41,21 @@ export default function GetTrophy() {
       }
       getTrophy();
     }, []);
+
+    const handleDelete = async () => {
+        setShowDelete(false)
+        try {
+          await databases.deleteDocument(
+            "67a5d22900142d063b7c", // Replace with your Database ID
+            "67a5e2820028754122b7", // Replace with your Collection ID
+            deleteTrophyId // The document ID to delete
+          );
+          setTrophy((recent) =>
+            recent.filter((troph) => troph.$id !== deleteTrophyId))
+        } catch (error) {
+          toast.error("Error deleting document:", error);
+        }
+      }
 
   return (
     <>
@@ -80,10 +98,17 @@ export default function GetTrophy() {
                                         {trop?.year}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        <span className='flex gap-2'>
-                                        <FaPencilAlt />
+                                    <span className='flex gap-2'>
+                                        <Link to={`/updatetrophy/${trop?.$id}`}>
+                                          <FaPencilAlt />
+                                        </Link>
+                                        <span onClick={() => {
+                                          setShowDelete(true)
+                                          setDeleteTrophyId(trop?.$id)
+                                        }}>
                                         <IoReceipt />
                                         </span>
+                                      </span>
                                     </Table.Cell>
                                     </Table.Row>
                             ))
@@ -91,6 +116,32 @@ export default function GetTrophy() {
                                 </Table.Body>
                             </Table>
                 </div>
+                <Modal
+                    show={showDelete}
+                    onClose={()=> setShowDelete(false)}
+                    popup size='sm'
+                    >
+                        <Modal.Header />
+                        <Modal.Body>
+                        <div className='text-center mx-auto'>
+                           <HiOutlineExclamationCircle className='h-14 w-14 mx-auto'/>
+                            <h1 className='mb-2'>
+                                 Do you want to delete this trophy
+                            </h1>
+                             <div className='flex gap-3 justify-center mb-2'>
+                                <Button 
+                                onClick={handleDelete} color='success'>
+                                    Yes, I'm Sure
+                                </Button>
+                                <Button color='failure'
+                                onClick={()=> setShowDelete(false)}
+                                >
+                                    No, Abort
+                                </Button>
+                             </div>
+                        </div>
+                        </Modal.Body>
+                    </Modal>
                 </div>
             </div>
       ) : (
