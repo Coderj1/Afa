@@ -148,7 +148,7 @@ export default function DashSidebar() {
                     Add Gallery
                 </Sidebar.Item>
             </Link>
-            <Link to='/gallerys'>
+            <Link to='/getgallery'>
                 <Sidebar.Item  active ={ path === 'gallery' }
                 icon={ FcGallery } 
                 as='div'>

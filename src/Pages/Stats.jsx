@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import img1 from '../img/shrt.jpg'
 import { databases } from "../AppwriteConfig";
+import { Query } from 'appwrite';
 
 export default function Stats() {
 
@@ -11,7 +12,8 @@ export default function Stats() {
       try {
         const response = await databases.listDocuments(
           "67a5d22900142d063b7c", // Replace with your Database ID
-          "67a6735f00074645fd5d" // Replace with your Collection ID
+          "67a6735f00074645fd5d", // Replace with your Collection ID
+          [Query.orderDesc('createdAt')]
         );
         setStat(response.documents); // Returns an array of documents
       } catch (error) {

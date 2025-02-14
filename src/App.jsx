@@ -24,6 +24,12 @@ import AddHero from './Admin/AddHero'
 import Dashboard from './Admin/Dashboard'
 import AdminRoute from './Admin/AdminRoute'
 import Account from './Component/Account'
+import GetBlog from './Admin/GetBlog'
+import GetCategory from './Admin/GetCategory'
+import GetGallery from './Admin/GetGallery'
+import GetHighlight from './Admin/GetHighlight'
+import GetMatches from './Admin/GetMatches'
+import GetPartners from './Admin/GetPartners'
 
 function App() {
 
@@ -53,6 +59,12 @@ function App() {
             <Route path='/addtrophy' element={<AddTrophy />} />
             <Route path='/addhero' element={<AddHero />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path="/getblog" element={<GetBlog />} />
+            <Route path="/category" element={<GetCategory />} />
+            <Route path="/getgallery" element={<GetGallery />} />
+            <Route path="/videos" element={<GetHighlight />} />
+            <Route path="/matches" element={<GetMatches />} />
+            <Route path="/partners" element={<GetPartners />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>

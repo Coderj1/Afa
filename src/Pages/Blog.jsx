@@ -100,7 +100,6 @@ export default function Blog() {
           "67ac3c10002749cffd72", // Replace with your Collection ID
           [
             Query.equal('blogId', blogId),
-            Query.orderDesc('createdAt')
           ]
         );
         setComments(response.documents); // Returns an array of documents
@@ -145,6 +144,7 @@ export default function Blog() {
               "67ac3c10002749cffd72", // Replace with your Collection ID
               [
                 Query.equal('blogId', blogId),
+                Query.orderDesc('createdAt')
               ]
             );
             setComments(response.documents); // Returns an array of documents
