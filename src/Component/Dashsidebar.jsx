@@ -71,20 +71,6 @@ export default function DashSidebar() {
                     Highlight
                 </Sidebar.Item>
             </Link>
-            <Link to='/addpartners'>
-                <Sidebar.Item  active ={ path === 'addpartners' }
-                icon={ BiSolidPackage } 
-                as='div'>
-                    Add Partners
-                </Sidebar.Item>
-            </Link>
-            <Link to='/partners'>
-                <Sidebar.Item  active ={ path === 'partners' }
-                icon={ BiPackage } 
-                as='div'>
-                    Partners
-                </Sidebar.Item>
-            </Link>
             <Link to='/addmatch'>
                 <Sidebar.Item  active ={ path === 'addmatch' }
                 icon={ FaSafari } 
@@ -99,20 +85,6 @@ export default function DashSidebar() {
                     Matches
                 </Sidebar.Item>
             </Link>
-            <Link to='/addcat'>
-                <Sidebar.Item  active ={ path === 'addcat' }
-                icon={ FaAddressCard } 
-                as='div'>
-                    Add Category
-                </Sidebar.Item>
-            </Link>
-            <Link to='/category'>
-                <Sidebar.Item  active ={ path === 'category' }
-                icon={ PiSoccerBallBold } 
-                as='div'>
-                    Category
-                </Sidebar.Item>
-            </Link>
             <Link to='/addstats'>
                 <Sidebar.Item  active ={ path === 'addstats' }
                 icon={ BiStats } 
@@ -120,25 +92,11 @@ export default function DashSidebar() {
                     Add Stats
                 </Sidebar.Item>
             </Link>
-            <Link to='/pstats'>
+            <Link to='/stats'>
                 <Sidebar.Item  active ={ path === 'stats' }
                 icon={ FaChartSimple } 
                 as='div'>
                     Stats
-                </Sidebar.Item>
-            </Link>
-            <Link to='/addtrophy'>
-                <Sidebar.Item  active ={ path === 'addtrophy' }
-                icon={ FcAddDatabase } 
-                as='div'>
-                    Add Trophy
-                </Sidebar.Item>
-            </Link>
-            <Link to='/trophys'>
-                <Sidebar.Item  active ={ path === 'trophy' }
-                icon={ GiTrophyCup } 
-                as='div'>
-                    Trophy
                 </Sidebar.Item>
             </Link>
             <Link to='/addgal'>
@@ -155,6 +113,20 @@ export default function DashSidebar() {
                     Gallery
                 </Sidebar.Item>
             </Link>
+            <Link to='/addtrophy'>
+                <Sidebar.Item  active ={ path === 'addtrophy' }
+                icon={ FcAddDatabase } 
+                as='div'>
+                    Add Trophy
+                </Sidebar.Item>
+            </Link>
+            <Link to='/trophys'>
+                <Sidebar.Item  active ={ path === 'trophy' }
+                icon={ GiTrophyCup } 
+                as='div'>
+                    Trophy
+                </Sidebar.Item>
+            </Link>
             <Link to='/addhero'>
                 <Sidebar.Item  active ={ path === 'addhero' }
                 icon={ MdLibraryAdd } 
@@ -167,6 +139,34 @@ export default function DashSidebar() {
                 icon={ FaEthereum } 
                 as='div'>
                     Hero
+                </Sidebar.Item>
+            </Link>
+            <Link to='/addpartners'>
+                <Sidebar.Item  active ={ path === 'addpartners' }
+                icon={ BiSolidPackage } 
+                as='div'>
+                    Add Partners
+                </Sidebar.Item>
+            </Link>
+            <Link to='/partners'>
+                <Sidebar.Item  active ={ path === 'partners' }
+                icon={ BiPackage } 
+                as='div'>
+                    Partners
+                </Sidebar.Item>
+            </Link>
+            <Link to='/addcat'>
+                <Sidebar.Item  active ={ path === 'addcat' }
+                icon={ FaAddressCard } 
+                as='div'>
+                    Add Category
+                </Sidebar.Item>
+            </Link>
+            <Link to='/category'>
+                <Sidebar.Item  active ={ path === 'category' }
+                icon={ PiSoccerBallBold } 
+                as='div'>
+                    Category
                 </Sidebar.Item>
             </Link>
             <Sidebar.Item  icon={ HiOutlineBell}

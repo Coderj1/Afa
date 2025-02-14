@@ -30,6 +30,9 @@ import GetGallery from './Admin/GetGallery'
 import GetHighlight from './Admin/GetHighlight'
 import GetMatches from './Admin/GetMatches'
 import GetPartners from './Admin/GetPartners'
+import GetHero from './Admin/GetHero'
+import GetStats from './Admin/GetStats'
+import GetTrophy from './Admin/GetTrophy'
 
 function App() {
 
@@ -59,12 +62,15 @@ function App() {
             <Route path='/addtrophy' element={<AddTrophy />} />
             <Route path='/addhero' element={<AddHero />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path="/getblog" element={<GetBlog />} />
+            <Route path="/blogs" element={<GetBlog />} />
             <Route path="/category" element={<GetCategory />} />
             <Route path="/getgallery" element={<GetGallery />} />
             <Route path="/videos" element={<GetHighlight />} />
             <Route path="/matches" element={<GetMatches />} />
             <Route path="/partners" element={<GetPartners />} />
+            <Route path="/hero" element={<GetHero />} />
+            <Route path="/stats" element={<GetStats />} />
+            <Route path="/trophys" element={<GetTrophy />} />
         </Routes>
         <FooterComp />
       </BrowserRouter>
