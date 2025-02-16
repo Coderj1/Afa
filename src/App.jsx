@@ -34,6 +34,7 @@ import GetHero from './Admin/GetHero'
 import GetStats from './Admin/GetStats'
 import GetTrophy from './Admin/GetTrophy'
 import UpdateBlog from './Admin/UpdateBlog'
+import Profile from './Pages/Profile'
 
 function App() {
 
@@ -50,7 +51,7 @@ function App() {
           <Route path="/blog/:blogId" element={<Blog />} />
           <Route path="/play/:videoId" element={<Play />} />
           <Route path="/matchdet/:matchId" element={<Matchdetail />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<Profile />} />
           <Route path="/stat" element={<Stats />} />
           <Route path="/account" element={<Account />} />
             <Route path='/addblog' element={<Addblog />} />

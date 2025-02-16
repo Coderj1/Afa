@@ -3,24 +3,18 @@ import { FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaTwitter, FaYoutube 
 import { MdEmail, MdFacebook } from 'react-icons/md'
 import { motion } from 'framer-motion';
 import { BsTwitterX } from 'react-icons/bs'
-import img2 from '../img/afab.jpg'
+import img2 from '../img/afa.png'
 
 export default function Profile() {
   return (
     <div>
-       <motion.h1
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className='text-3xl font-bold text-gray-500 text-center mt-5'>
-        PROFILE</motion.h1>
         <div className='flex md:flex-row flex-col  items-center justify-center p-2'>
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
           className='flex-1'>
-               <img src={img2} alt="hero" width={550} className='w-full sm:p-5 rounded-3xl ' />
+               <img src={img2} alt="hero" width={400} className='w-full sm:p-5 rounded-3xl ' />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: -100 }}
@@ -75,6 +69,11 @@ export default function Profile() {
                     <FaYoutube color='red' size={35} />
                   </motion.div>
                 </div>
+              <motion.div className='p-4 max-w-2xl mx-auto'>
+                 <motion.h1 className='font-bold'>
+                    Administration
+                 </motion.h1>
+              </motion.div>
               </motion.div>
         </div>
     </div>
