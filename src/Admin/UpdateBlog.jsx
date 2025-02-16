@@ -14,9 +14,8 @@ export default function UpdateBlog() {
     const [image, setImg] = useState(null);  // Selected image state
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);  // Loading state
-    const [ blogs, setBlog] = useState([])
     const [userData, setUserData] = useState()
-    const [blogdetail, setBlogdetail] = useState()
+    const [blogdetail, setBlogdetail] = useState({})
 
   useEffect(() => {
     const getData = async () => {
@@ -95,18 +94,19 @@ const handleUpdate = async (e) => {
     setLoading(true);
     setError(null);
 
+    const updatedData = {
+        title: blogdetail.title,
+        desc: blogdetail.desc,
+        img: blogdetail.img
+    };
+
     try {
         // Create blog post document in Appwrite
         const blog = await databases.updateDocument(
             '67a5d22900142d063b7c',
             '67a5dd0f003e56bfca74',
             blogId,
-            {
-                title,
-                desc,
-                img: image,
-                createdAt: new Date().toISOString()
-            }
+            updatedData
         );
 
         toast.success('Blog Upated successfully!!!');
@@ -144,8 +144,8 @@ const handleUpdate = async (e) => {
                     <TextInput type='text'
                     placeholder='Titre'
                     className='mb-3'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={blogdetail.title}
+                    onChange={(e) => setBlogdetail({...blogdetail, title: e.target.value})}
                     />
                 </div>
                 <div className='border-4 border-teal-500 border-dotted p-3'>
@@ -156,8 +156,8 @@ const handleUpdate = async (e) => {
                 <Textarea type='text'
                     placeholder='desc'
                     className='mb-3'
-                    value={desc}
-                    onChange={(e) => setDesc(e.target.value)}
+                    value={blogdetail.desc}
+                    onChange={(e) => setBlogdetail({...blogdetail, desc: e.target.value})}
                 />
                 {image && (
                                 <img
