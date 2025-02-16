@@ -143,7 +143,6 @@ const handleUpdate = async (e) => {
                 <div>
                     <TextInput type='text'
                     placeholder='Titre'
-                    required
                     className='mb-3'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
