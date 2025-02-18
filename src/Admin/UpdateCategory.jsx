@@ -93,7 +93,7 @@ export default function UpdateCategory() {
 
     const updatedData = {
         cat: categorydetail.cat,
-        img: image
+        img: image || categorydetail.img
     };
 
     try {
@@ -105,7 +105,7 @@ export default function UpdateCategory() {
             updatedData
         );
 
-        toast.success('Category Upated successfully!!!');
+        toast.success('Category Updated successfully!!!');
     } catch (err) {
         toast.error('Failed: ' + err.message);
     } finally {
@@ -134,7 +134,7 @@ export default function UpdateCategory() {
                 <form className='flex flex-col gap-4' onSubmit={handleUpdate}>
                 <div>
                     <TextInput type='text'
-                    placeholder='Titre'
+                    placeholder='Category'
                     className='mb-3'
                     value={categorydetail?.cat}
                     onChange={(e) => setCategorydetail({...categorydetail, cat: e.target.value})}

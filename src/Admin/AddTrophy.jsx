@@ -87,7 +87,6 @@ const handleSubmit = async (e) => {
             {
                 title,
                 num_title,
-                player_competition,
                 year,
                 trophy_img: image,
                 createdAt: new Date().toISOString()
@@ -124,15 +123,6 @@ const handleSubmit = async (e) => {
                 className='mb-3'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-              />
-            </div>
-            <div>
-              <TextInput type='text'
-                placeholder='Player of the competition'
-                required
-                className='mb-3'
-                value={player_competition}
-                onChange={(e) => setPlayer_competition(e.target.value)}
               />
             </div>
             <div>

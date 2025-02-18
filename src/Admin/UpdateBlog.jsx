@@ -95,7 +95,7 @@ const handleUpdate = async (e) => {
     const updatedData = {
         title: blogdetail.title,
         desc: blogdetail.desc,
-        img: image
+        img: image || blogdetail.img
     };
 
     try {
@@ -107,7 +107,7 @@ const handleUpdate = async (e) => {
             updatedData
         );
 
-        toast.success('Blog Upated successfully!!!');
+        toast.success('Blog Updated successfully!!!');
     } catch (err) {
         toast.error('Failed: ' + err.message);
     } finally {

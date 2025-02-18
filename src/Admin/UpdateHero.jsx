@@ -94,7 +94,7 @@ export default function UpdateHero() {
     const updatedData = {
         hero_title: herodetail.hero_title,
         hero_desc: herodetail.hero_desc,
-        logo: image
+        logo: image || herodetail.logo
     };
 
     try {
@@ -106,7 +106,7 @@ export default function UpdateHero() {
             updatedData
         );
 
-        toast.success('Hero Section Upated successfully!!!');
+        toast.success('Hero Section Updated successfully!!!');
     } catch (err) {
         toast.error('Failed: ' + err.message);
     } finally {

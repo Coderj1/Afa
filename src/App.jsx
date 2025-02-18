@@ -40,6 +40,10 @@ import ScrollToTop from './Component/scroll'
 import UpdateGallery from './Admin/UpdateGallery'
 import UpdateHero from './Admin/UpdateHero'
 import UpdateHightlight from './Admin/UpdateHightlight'
+import UpdateMatch from './Admin/UpdateMatches'
+import UpdatePartner from './Admin/UpdatePartner'
+import UpdateStat from './Admin/UpdateStats'
+import UpdateTrophy from './Admin/UpdateTrophy'
 
 function App() {
 
@@ -84,6 +88,10 @@ function App() {
             <Route path="/updategallery/:galleryId" element={<UpdateGallery />} />
             <Route path="/updatehero/:heroId" element={<UpdateHero />} />
             <Route path="/updatevideo/:videoId" element={<UpdateHightlight />} />
+            <Route path="/updatematch/:matchId" element={<UpdateMatch />} />
+            <Route path="/updatepartner/:partnerId" element={<UpdatePartner />} />
+            <Route path="/updatestat/:statId" element={<UpdateStat />} />
+            <Route path="/updatetrophy/:trophyId" element={<UpdateTrophy />} />
         </Routes>
         <FooterComp />
       </Router>

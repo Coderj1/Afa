@@ -39,7 +39,9 @@ export default function Header() {
        >
          <Navbar className='border-b-2 font-bold border-blue-300'>
             <Navbar.Brand>
+               <Link to='/'>
                 <img src={logo} alt="logo" width={40} className='rounded-full' />
+               </Link>
             </Navbar.Brand>
             <div className='flex items-center gap-2 md:order-2'>
               <h1>

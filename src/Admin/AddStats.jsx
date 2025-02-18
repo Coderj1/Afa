@@ -11,7 +11,7 @@ function AddStats() {
     const navigate = useNavigate();
 
   const [rating, setRating] = useState('')
-  const [ name, setName ] = useState('')
+  const [name, setName] = useState('')
   const [position, setPosition] = useState('')
   const [nationality, setNationality] = useState('')
   const [image, setImg] = useState(null);  // Selected image state

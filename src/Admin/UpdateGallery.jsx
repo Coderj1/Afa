@@ -93,7 +93,7 @@ export default function UpdateGallery() {
 
     const updatedData = {
         title: gallerydetail.title,
-        img: image
+        img: image || gallerydetail.img
     };
 
     try {
@@ -105,7 +105,7 @@ export default function UpdateGallery() {
             updatedData
         );
 
-        toast.success('Gallery Upated successfully!!!');
+        toast.success('Gallery Updated successfully!!!');
     } catch (err) {
         toast.error('Failed: ' + err.message);
     } finally {

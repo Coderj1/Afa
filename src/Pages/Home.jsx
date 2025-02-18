@@ -117,11 +117,13 @@ export default function Home() {
             </p>
             <div className='flex gap-3 justify-center sm:p-3 p-1'>
             <Link to='/gallery'>
+             <span className='sm:inline hidden'>
               <Button color='blue' className='rounded-full sm:w-32 w-52'>Gallery</Button>
+             </span>
             </Link>
-              <span className='sm:inline hidden'>
-               <Button color='blue' className='rounded-full sm:w-32'>Contact</Button>
-              </span>
+            <Link to='/trophy'>
+               <Button color='blue' className='rounded-full sm:w-32 w-52'>Trophy Room</Button>
+            </Link>
             </div>
           </motion.div>
           <motion.div
@@ -141,27 +143,27 @@ export default function Home() {
         transition={{ duration: 0.5 }}
         className='flex flex-wrap gap-2 max-w-7xl w-full relative mx-auto'
         >
-           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+           <div className="flex sm:justify-between justify-center gap-3 items-center sm:w-72 w-full mx-auto p-4 m-3 ml-2 mr-2 border-2 rounded-lg shadow-xl hover:scale-110">
            <img src={imgj} width={90} className='rounded-full'/>
              <h1 className='text-sm font-bold uppercase'>
              Equipe de joueurs
              </h1>
            </div>
-           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto  p-3 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+           <div className="flex sm:justify-between justify-center gap-3 items-center sm:w-72 w-full mx-auto p-3 m-3 ml-2 mr-2 border-2 rounded-lg shadow-xl hover:scale-110">
              <img src={img2} width={90} className='rounded-full'/>
              <h1 className='text-md font-bold uppercase'>
               meilleur joueur
              </h1>
            </div>
-           <div className="flex justify-between gap-2 items-center sm:w-72 mx-auto p-4 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
-             <HiTrophy color='yellow' size={50} />
+           <div className="flex sm:justify-between justify-center gap-3 items-center sm:w-72 w-full mx-auto p-4 m-3 ml-2 mr-2 border-2 rounded-lg shadow-xl hover:scale-110">
+             <HiTrophy color='yellow' size={60} />
              <h1 className='text-md font-bold uppercase'>
              Salle des trophées
              </h1>
            </div>
-           <div className="flex justify-between gap-3 items-center sm:w-72 mx-auto  p-5 m-3 border-2 rounded-lg shadow-xl hover:scale-110">
+           <div className="flex sm:justify-between justify-center gap-3 items-center sm:w-72 w-full mx-auto  p-4 m-3 ml-2 mr-2 border-2 rounded-lg shadow-xl hover:scale-110">
            <img src={imgl} width={70} className='rounded-full'/>
-             <h1 className='text-xs font-bold uppercase'>
+             <h1 className='text-md font-bold uppercase'>
              Statistiques de l'équipe
              </h1>
            </div>
@@ -257,11 +259,11 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 3 }}
                  className='sm:text-4xl font-bold mb-4'>Galerie de la salle des trophées</motion.h1>
-                <Button className='mx-auto sm:w-52 w-32 rounded-full' color='blue'>
                   <Link to='/trophy'>
+                <Button className='mx-auto sm:w-52 w-32 rounded-full' color='blue'>
                      Gallery
-                  </Link>
                 </Button>
+                  </Link>
               </div>
             </motion.div>
           </div>

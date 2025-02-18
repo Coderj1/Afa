@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Modal } from 'flowbite-react'
 import { useEffect} from 'react';
 import { databases } from '../AppwriteConfig'
+import { Query } from 'appwrite';
 
 export default function Trophy() {
 
@@ -15,7 +16,10 @@ export default function Trophy() {
             try {
               const response = await databases.listDocuments(
                 "67a5d22900142d063b7c", // Replace with your Database ID
-                "67a5e2820028754122b7" // Replace with your Collection ID
+                "67a5e2820028754122b7", // Replace with your Collection ID
+                [
+                  Query.orderDesc('createdAt')
+                ]
               );
               setTrophy(response.documents); // Returns an array of documents
             } catch (error) {
@@ -49,7 +53,7 @@ export default function Trophy() {
                Trophy Room
                </h1>
          </div>
-           <div className='min-h-screen flex flex-wrap justify-between md:gap-6 gap-24 m-7 max-w-5xl mx-auto'>
+           <div className='min-h-screen flex flex-wrap gap-1 justify-between m-2 max-w-5xl mx-auto'>
                {
                     trophy.map((trop) => (
                     <div key={trop.$id}  onClick={() =>{

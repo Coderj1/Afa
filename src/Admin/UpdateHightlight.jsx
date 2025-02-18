@@ -95,7 +95,7 @@ const handleUpdate = async (e) => {
     const updatedData = {
         title: videodetail.title,
         desc: videodetail.desc,
-        video: image
+        video: image || videodetail.video
     };
 
     try {
@@ -107,7 +107,7 @@ const handleUpdate = async (e) => {
             updatedData
         );
 
-        toast.success('Video Upated successfully!!!');
+        toast.success('Video Updated successfully!!!');
     } catch (err) {
         toast.error('Failed: ' + err.message);
     } finally {
