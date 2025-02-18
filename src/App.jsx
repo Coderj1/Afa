@@ -35,12 +35,18 @@ import GetStats from './Admin/GetStats'
 import GetTrophy from './Admin/GetTrophy'
 import UpdateBlog from './Admin/UpdateBlog'
 import Profile from './Pages/Profile'
+import UpdateCategory from './Admin/UpdateCategory'
+import ScrollToTop from './Component/scroll'
+import UpdateGallery from './Admin/UpdateGallery'
+import UpdateHero from './Admin/UpdateHero'
+import UpdateHightlight from './Admin/UpdateHightlight'
 
 function App() {
 
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -74,6 +80,10 @@ function App() {
             <Route path="/stats" element={<GetStats />} />
             <Route path="/trophys" element={<GetTrophy />} />
             <Route path="/updateblog/:blogId" element={<UpdateBlog />} />
+            <Route path="/updatecategory/:catId" element={<UpdateCategory />} />
+            <Route path="/updategallery/:galleryId" element={<UpdateGallery />} />
+            <Route path="/updatehero/:heroId" element={<UpdateHero />} />
+            <Route path="/updatevideo/:videoId" element={<UpdateHightlight />} />
         </Routes>
         <FooterComp />
       </Router>

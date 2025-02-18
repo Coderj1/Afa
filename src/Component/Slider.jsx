@@ -38,7 +38,7 @@ const SimpleSlider = () => {
     <div className='bg-white w-full'>
       <div className='flex flex-col md:flex-row gap-5 max-w-5xl mx-auto w-full p-1 flex-wrap'>
           { blogs.map((blog) => (
-            <div className='group relative w-full h-[330px] hover:border-2
+            <div className='relative w-full hover:border-2
             border-teal-400 overflow-hidden sm:w-[340px] bg-blue-700 rounded-md'>
             <Link to={`/blog/${blog.$id}`}>
             <img src={blog.img} className='w-full object-cover' />

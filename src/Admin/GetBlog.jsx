@@ -79,6 +79,9 @@ export default function GetBlog() {
                                       <Table.HeadCell>
                                           Image
                                       </Table.HeadCell>
+                                      <Table.HeadCell>
+                                          Likes
+                                      </Table.HeadCell>
                               </Table.Head>
                               <Table.Body>
                   {
@@ -96,6 +99,9 @@ export default function GetBlog() {
                                     </Table.Cell>
                                     <Table.Cell>
                                       <img src={blog?.img} width={100} />
+                                    </Table.Cell>
+                                    <Table.Cell>                           
+                                        {blog?.like.length}
                                     </Table.Cell>
                                     <Table.Cell>
                                       <span className='flex gap-2'>

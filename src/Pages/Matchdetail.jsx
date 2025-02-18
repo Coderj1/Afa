@@ -35,8 +35,8 @@ export default function Matchdetail() {
   }, [matchId]);
 
   return (
-    <div className='bg-img3 bg-cover min-h-screen flex flex-col items-center justify-center'>
-    <div className='mx-auto max-w-5xl bg-white p-3 border-dashed border-4 border-blue-500 shadow-xl'>
+    <div className='bg-img3 bg-cover sm:p-10 p-3 min-h-screen items-center justify-center'>
+    <div className='mx-auto max-w-5xl bg-white p-1 rounded-2xl border-2 border-blue-500 shadow-xl'>
         <div>
             <h1 className='text-center text-2xl font-bold text-blue-500'>Upcoming Match</h1>
         </div>
@@ -54,6 +54,7 @@ export default function Matchdetail() {
                     </span>
         </div>
         <div className='mx-auto text-center'>
+                    <h1 className='text-sm font-semibold text-blue-400'>Arbitre</h1>
                     <p className='font-bold text-gray-500'>{match?.arbitre}</p>
                     <p className='text-black font-bold text-sm'>{match?.stade}</p>
                     <p className='font-semibold text-gray-400'>{match?.date} | {match?.time}</p>

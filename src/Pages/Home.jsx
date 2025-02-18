@@ -130,7 +130,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           className='flex-1 md:inline hidden'
           >
-            <img src={img1} alt="hero" width={500} className='rounded-full' />
+            <img src={head.logo} alt="hero" width={500} className='rounded-full' />
         </motion.div>
         </div>
           ))

@@ -34,7 +34,7 @@ export default function Banner() {
       {
         tblogs.map((blog) => (
         <div className='p-2 max-w-5xl mx-auto sm:hover:scale-110 flex sm:flex-row flex-col'>
-          <img src={blog.img} className='flex-1 w-full sm:w-[300px]' />
+          <img src={blog.img} className='flex-1 w-full rounded-md sm:w-[300px]' />
           <div className='w-full italic p-4 pt-5'>
               <h1 className='uppercase text-2xl font-bold text-blue-300'>{blog.title}</h1>
               <p className=''>

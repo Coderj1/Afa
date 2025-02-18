@@ -1,7 +1,8 @@
 import React from 'react'
 import { FaThumbsUp } from 'react-icons/fa6'
+import { GoHeartFill } from "react-icons/go"
 import Slider from '../Component/Slider'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { account, databases } from '../AppwriteConfig'
 import { Button, Textarea } from 'flowbite-react'
@@ -18,7 +19,15 @@ export default function Blog() {
   const [isLiked, setIsLiked] = useState(true)
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
-  const [ success, setSuccess ] = useState(false)
+  const [userData, setUserData] = useState()
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await account.get()
+      setUserData(response)
+    }
+    getData()
+  }, [])
 
   useEffect(() => {
     const getBlogdetail = async () => {
@@ -169,13 +178,13 @@ export default function Blog() {
                 backgroundRepeat: 'no-repeat',
               }} >
           <div className='min-h-screen p-3 mx-auto pt-72 opacity-90 max-w-5xl flex flex-col'>
-            <div className='bg-white p-2 border-1 rounded-tl-3xl rounded-tr-3xl'>
-              <img src={blogdetail?.img} className='inline sm:hidden w-fit p-2' />
+            <div className='bg-white p-2 border-1 rounded-tl-3xl min-h-80 rounded-tr-3xl'>
+              <img src={blogdetail?.img} className='inline sm:hidden rounded-2xl w-fit p-2' />
               <span className='flex justify-between max-w-2xl mx-auto'>
                 <p className='uppercase text-xl font-bold text-blue-500'>{blogdetail?.title}</p>
                 <span className='flex gap-1'>
-                 <FaThumbsUp onClick={updateLike} className='mt-1 cursor-pointer' size={18}/>
-                 <p className='mt-1'>
+                 <GoHeartFill color='blue' onClick={updateLike} className='mt-1 cursor-pointer' size={18}/>
+                 <p className='mt-[2px]'>
                   {like} 
                   {
                   isLiked ?  
@@ -186,29 +195,35 @@ export default function Blog() {
                 </span>
               </span>
                 <p className='max-w-3xl mx-auto'>{blogdetail?.desc}</p>
-                <div className='max-w-xl p-2 border-2 rounded-xl mx-auto'>
-                  <h1 className='text-xl font-bold'>Comment</h1>
-                  <div>
-                    <div className='flex'>
-                      <Textarea 
-                        className="m-1"
-                        placeholder="Comment here..."
-                        value={comment} // ✅ Use comment state
-                        onChange={(e) => setComment(e.target.value)} // ✅ Update state on change
-                      />
-                        <IoMdSend size={40} color='blue' onClick={handleComment} className='mt-3 cursor-pointer' />
+                {
+                  userData ? (
+                  <div className='max-w-xl p-2 border-2 rounded-xl mx-auto'>
+                    <h1 className='text-xl font-bold'>Comment</h1>
+                    <div>
+                      <div className='flex'>
+                        <Textarea 
+                          className="m-1"
+                          placeholder="Comment here..."
+                          value={comment} // ✅ Use comment state
+                          onChange={(e) => setComment(e.target.value)} // ✅ Update state on change
+                        />
+                          <IoMdSend size={40} color='blue' onClick={handleComment} className='mt-3 cursor-pointer' />
+                      </div>
+                      {
+                        comments.map((com) =>(
+                          <div className='p-2 flex justify-between'>
+                            <h1 className='text-xs'>{com.comment}</h1>
+                            <h1 className='text-xs'>{moment(com.createdAt).fromNow()}</h1>
+                          </div>
+                        ))
+                      }
                     </div>
-                     {
-                      comments.map((com) =>(
-                        <div className='p-2 flex justify-between'>
-                           <h1 className='text-xs'>{com.comment}</h1>
-                           <h1 className='text-xs'>{moment(com.createdAt).fromNow()}</h1>
-                        </div>
-                      ))
-                     }
+                    {blogdetail?.comment}
                   </div>
-                  {blogdetail?.comment}
-                </div>
+                  ) : (
+                    <p className='text-center text-sm text-gray-400'>Access an Account to Like and Comment <Link to='/login'><span className='text-blue-500'>Login</span></Link></p>
+                  )
+                }
             </div>
           </div>
           </div>

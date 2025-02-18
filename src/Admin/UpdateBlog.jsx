@@ -9,8 +9,6 @@ export default function UpdateBlog() {
 
     const {blogId} = useParams()
 
-    const [title, setTitle] = useState('')
-    const [desc, setDesc] = useState('')
     const [image, setImg] = useState(null);  // Selected image state
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);  // Loading state
@@ -97,11 +95,11 @@ const handleUpdate = async (e) => {
     const updatedData = {
         title: blogdetail.title,
         desc: blogdetail.desc,
-        img: blogdetail.img
+        img: image
     };
 
     try {
-        // Create blog post document in Appwrite
+        // Update blog post document in Appwrite
         const blog = await databases.updateDocument(
             '67a5d22900142d063b7c',
             '67a5dd0f003e56bfca74',
@@ -123,12 +121,12 @@ const handleUpdate = async (e) => {
             <div className='p-3 max-w-6xl mx-auto flex-1 w-full'>
                 <ToastContainer />
                 <h1 className='text-center text-3xl my-7 font-semibold'>
-                Blog
+                Update Blog
                 </h1>
                 <div className='p-4 flex gap-4 justify-between overflow-x-scroll scrollbar'>
                     <span>
                         <h1 className='text-2xl font-bold'>Title</h1>
-                        <p className=''>{blogdetail?.title}</p>
+                        <p className='line-clamp-2'>{blogdetail?.title}</p>
                     </span>
                     <span>
                         <h1 className='text-2xl font-bold'>Image</h1>
@@ -136,7 +134,7 @@ const handleUpdate = async (e) => {
                     </span>
                     <span className='w-80'>
                         <h1 className='text-2xl font-bold'>Description</h1>
-                        <p className=''>{blogdetail?.desc}</p>
+                        <p className='line-clamp-3'>{blogdetail?.desc}</p>
                     </span>
                 </div>
                 <form className='flex flex-col gap-4' onSubmit={handleUpdate}>

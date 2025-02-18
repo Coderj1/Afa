@@ -49,7 +49,7 @@ export default function Header() {
               <IoCloudOffline onClick={Signout} color='red' size={25} className='cursor-pointer' />
               ) : (
                 <Link to='/login'>
-                  <button className='w-28 border-2 border-blue-500 bg-blue-500 hover:bg-white hover:text-blue-500 rounded-lg text-white p-1'>
+                  <button className='w-28 border-2 border-blue-500 hover:bg-blue-500 bg-white text-blue-500 rounded-lg hover:text-white p-1'>
                      Login
                   </button>
                 </Link>
