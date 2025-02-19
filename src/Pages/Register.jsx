@@ -84,12 +84,12 @@ function Register() {
                     })
                   }}/>
               </div>
-              <p className='text-center text-sm text-white'>Password must be more than 8 characters</p>
+              <p className='text-center text-sm text-white'>Password must be 8 or more characters</p>
               <Button 
               onClick={signup}
               gradientDuoTone='purpleToPink' 
               type='submit'>
-              Sign Up
+              Register
               </Button>
             </form>
             <div className='gap-1 text-sm mt-2 text-center'> 

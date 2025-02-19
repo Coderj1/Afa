@@ -10,12 +10,23 @@ import { PiSoccerBallBold } from 'react-icons/pi'
 import { GiTrophyCup } from 'react-icons/gi'
 import { FcAddDatabase, FcGallery } from 'react-icons/fc'
 import { MdAddAPhoto, MdLibraryAdd } from 'react-icons/md'
+import { account } from '../AppwriteConfig'
 
 export default function DashSidebar() {
 
   const path = useLocation().pathname
 
   const navigate = useNavigate()
+
+  const Signout = async () => {
+    try {
+      await account.deleteSession('current');
+      navigate('/login'); // Redirect to login page
+    } catch (error) {
+      toast.error('Logout failed:', error.message);
+    }
+    window.location.reload();
+   };
 
   return (
     /* call sidebar from flowbite*/
@@ -30,11 +41,11 @@ export default function DashSidebar() {
                    Dashboard
                 </Sidebar.Item>
             </Link>
-            <Link to='/users'>
-                <Sidebar.Item  active ={ path === 'users' } 
+            <Link to='/getprofile'>
+                <Sidebar.Item  active ={ path === 'getprofile' } 
                 icon={ HiOutlineUserGroup } 
                 as='div'>
-                    Users
+                    Profile
                 </Sidebar.Item>
             </Link>
             <Link to='/addblog'>
@@ -170,6 +181,7 @@ export default function DashSidebar() {
                 </Sidebar.Item>
             </Link>
             <Sidebar.Item  icon={ HiOutlineBell}
+                onClick={Signout}
                 className='cursor-pointer'>
                 SignOut
             </Sidebar.Item>

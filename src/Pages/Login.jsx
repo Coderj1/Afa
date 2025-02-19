@@ -67,7 +67,7 @@ function Login() {
             <div className='gap-1 text-sm mt-2 text-center'> 
               <span className='text-white'>I Don't an account? </span>
               <Link to='/register' className='text-blue-500'>
-                Sign Up
+                Register
               </Link>
             </div>
          </div>

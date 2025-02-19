@@ -99,12 +99,6 @@ export default function GetHero() {
                                         <Link to={`/updatehero/${hero?.$id}`}>
                                           <FaPencilAlt />
                                         </Link>
-                                        <span onClick={() => {
-                                          setShowDelete(true)
-                                          setDeleteHeroId(hero?.$id)
-                                        }}>
-                                        <IoReceipt />
-                                        </span>
                                       </span>
                                   </Table.Cell>
                                 </Table.Row>

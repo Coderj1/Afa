@@ -8,7 +8,6 @@ import Gallery from './Pages/Gallery'
 import Trophy from './Pages/Trophy'
 import Blog from './Pages/Blog'
 import Play from './Pages/Play'
-import About from './Pages/About'
 import Stats from './Pages/Stats'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
@@ -21,8 +20,8 @@ import AddPartners from './Admin/Addpartners'
 import AddStats from './Admin/AddStats'
 import AddTrophy from './Admin/AddTrophy'
 import AddHero from './Admin/AddHero'
+import AddProfile from './Admin/Addprofile'
 import Dashboard from './Admin/Dashboard'
-import AdminRoute from './Admin/AdminRoute'
 import Account from './Component/Account'
 import GetBlog from './Admin/GetBlog'
 import GetCategory from './Admin/GetCategory'
@@ -33,6 +32,7 @@ import GetPartners from './Admin/GetPartners'
 import GetHero from './Admin/GetHero'
 import GetStats from './Admin/GetStats'
 import GetTrophy from './Admin/GetTrophy'
+import GetProfile from './Admin/Getprofile'
 import UpdateBlog from './Admin/UpdateBlog'
 import Profile from './Pages/Profile'
 import UpdateCategory from './Admin/UpdateCategory'
@@ -44,6 +44,7 @@ import UpdateMatch from './Admin/UpdateMatches'
 import UpdatePartner from './Admin/UpdatePartner'
 import UpdateStat from './Admin/UpdateStats'
 import UpdateTrophy from './Admin/UpdateTrophy'
+import UpdateProfile from './Admin/UpdateProfile'
 
 function App() {
 
@@ -73,6 +74,7 @@ function App() {
             <Route path='/addstats' element={<AddStats />} />
             <Route path='/addtrophy' element={<AddTrophy />} />
             <Route path='/addhero' element={<AddHero />} />
+            <Route path='/addprofile' element={<AddProfile />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path="/blogs" element={<GetBlog />} />
             <Route path="/category" element={<GetCategory />} />
@@ -83,6 +85,7 @@ function App() {
             <Route path="/hero" element={<GetHero />} />
             <Route path="/stats" element={<GetStats />} />
             <Route path="/trophys" element={<GetTrophy />} />
+            <Route path="/getprofile" element={<GetProfile />} />
             <Route path="/updateblog/:blogId" element={<UpdateBlog />} />
             <Route path="/updatecategory/:catId" element={<UpdateCategory />} />
             <Route path="/updategallery/:galleryId" element={<UpdateGallery />} />
@@ -92,6 +95,7 @@ function App() {
             <Route path="/updatepartner/:partnerId" element={<UpdatePartner />} />
             <Route path="/updatestat/:statId" element={<UpdateStat />} />
             <Route path="/updatetrophy/:trophyId" element={<UpdateTrophy />} />
+            <Route path="/updateprofile/:profileId" element={<UpdateProfile />} />
         </Routes>
         <FooterComp />
       </Router>
